@@ -13,7 +13,7 @@ const Hero = () => {
         <div className="absolute right-0 top-0 bottom-0 w-[40%] bg-gradient-to-l from-[#E60000]/80 via-[#E60000]/20 to-transparent z-10 mix-blend-screen"></div>
       </div>
 
-      <div className="relative z-10 flex flex-col md:block w-full h-full pb-32 md:pb-0 pt-20 md:pt-0">
+      <div className="relative z-10 flex flex-col md:block w-full h-full pb-0 md:pb-0 pt-20 md:pt-0">
         
         {/* =======================
             DESKTOP LAYOUT 
@@ -108,14 +108,14 @@ const Hero = () => {
           {/* Burger video + stickers */}
           <div className="relative w-full z-20 flex justify-center items-center">
 
-            {/* Popular Fire - Repositioned for visibility */}
+            {/* Popular Fire - Controlled chaos pos 1 */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0, rotate: -45 }}
+              animate={{ opacity: 1, scale: 1, rotate: -15 }}
               transition={{ delay: 0.4, type: "spring" }}
-              className="absolute top-0 right-4 z-40"
+              className="absolute -top-[2vh] left-4 z-40"
             >
-              <p className="text-[0.6rem] font-black tracking-widest text-white bg-brandRed px-2 py-1 border-2 border-black leading-none shadow-lg">POPULAR FIRE /</p>
+              <p className="text-[0.6rem] font-black tracking-widest text-white bg-brandRed px-2 py-1 border-2 border-black leading-none shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">POPULAR FIRE /</p>
             </motion.div>
 
             {/* Video */}
@@ -136,44 +136,43 @@ const Hero = () => {
               />
             </motion.div>
 
-            {/* Flame Club - top left */}
+            {/* Flame Club - Controlled chaos pos 2 */}
             <motion.div 
-              initial={{ rotate: 50, scale: 0, opacity: 0 }}
-              animate={{ rotate: -12, scale: 1, opacity: 1 }}
+              initial={{ rotate: 90, scale: 0, opacity: 0 }}
+              animate={{ rotate: 12, scale: 1, opacity: 1 }}
               transition={{ delay: 0.6, type: "spring" }}
-              className="absolute top-[8%] left-4 z-30"
+              className="absolute bottom-[10%] left-0 z-30"
             >
-              <div className="bg-brandRed text-white rounded-full border-2 border-black flex flex-col items-center justify-center shadow-[0_6px_16px_rgba(0,0,0,0.8)]" 
-                style={{ width: '12vw', height: '12vw', minWidth: '40px', minHeight: '40px' }}>
-                <span className="text-[0.45rem] font-black leading-none text-center">THE<br/>FLAME<br/>CLUB</span>
+              <div className="bg-brandRed text-white rounded-full border-2 border-black flex flex-col items-center justify-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:scale-110 transition-transform" 
+                style={{ width: '15vw', height: '15vw', minWidth: '50px', minHeight: '50px' }}>
+                <span className="text-[0.5rem] font-black leading-none text-center uppercase">THE<br/>FLAME<br/>CLUB</span>
               </div>
             </motion.div>
 
-            {/* Certified Hot AF - bottom right */}
-            <motion.div
+            {/* Certified Hot AF - Controlled chaos pos 3 */}
+            <motion.div 
               initial={{ rotate: -90, x: 50, opacity: 0 }}
-              animate={{ rotate: 15, x: 0, opacity: 1 }}
+              animate={{ rotate: 10, x: 0, opacity: 1 }}
               transition={{ delay: 0.8, type: "spring" }}
-              className="absolute bottom-[18%] right-2 z-30 bg-brandYellow rounded-lg flex items-center justify-center border-2 border-black shadow-[0_8px_20px_rgba(0,0,0,0.6)]"
-              style={{ width: '10vw', height: '10vw', minWidth: '36px', minHeight: '36px' }}
+              className="absolute top-[20%] right-2 z-30 bg-brandYellow rounded-none flex items-center justify-center border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-2"
             >
-              <span className="text-black text-center font-black leading-tight" style={{ fontSize: '0.38rem' }}>CERT<br/>HOT AF</span>
+              <span className="text-black text-center font-black leading-tight uppercase" style={{ fontSize: '0.45rem' }}>CERTIFIED<br/>HOT AF</span>
             </motion.div>
           </div>
 
-          {/* Collection 01 & Social - Left aligned, vibrant red */}
+          {/* Collection 01 & Social - Reverted to Right, controlled chaos */}
           <motion.div 
-            initial={{ x: -50, opacity: 0 }}
+            initial={{ x: 50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 1 }}
-            className="w-full flex justify-start z-40 mt-[-4vh] pl-6 relative"
+            className="w-full flex justify-end z-40 mt-[-2vh] pr-6 relative"
           >
-            <div className="flex flex-col gap-2">
-              <div className="bg-brandRed text-white px-6 py-2 text-lg font-impact sticker-rotate-left border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,0.5)] inline-block relative">
-                <div className="duct-tape absolute -top-3 -right-4 rotate-12 w-12 bg-gray-400"></div>
+            <div className="flex flex-col gap-2 items-end">
+              <div className="bg-brandRed text-white px-6 py-2 text-lg font-impact sticker-rotate-right border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] inline-block relative">
+                <div className="duct-tape absolute -top-3 -left-4 -rotate-45 w-12 bg-gray-400"></div>
                 COLLECTION 01
               </div>
-              <p className="text-white font-sans text-[0.7rem] font-black tracking-widest pl-2 bg-black/60 w-fit px-2 py-0.5">@BROONFIRE_</p>
+              <p className="text-white font-sans text-[0.7rem] font-black tracking-widest bg-black/80 px-2 py-0.5 border-r-2 border-brandRed">@BROONFIRE_</p>
             </div>
           </motion.div>
 

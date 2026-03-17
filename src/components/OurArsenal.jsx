@@ -55,7 +55,7 @@ const itemVariants = {
 
 const OurArsenal = () => {
   return (
-    <section id="arsenal" className="py-24 px-6 md:px-12 bg-black font-sans relative z-10">
+    <section id="arsenal" className="pt-0 pb-24 px-6 md:px-12 bg-black font-sans relative z-10">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16 text-center">
           <motion.h2 
