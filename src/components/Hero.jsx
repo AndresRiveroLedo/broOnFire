@@ -3,40 +3,56 @@ import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
-    <main className="collage-container pt-0 md:pt-16 px-4 overflow-hidden relative">
-      {/* Background Layer */}
-      <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none overflow-hidden bg-black">
-        {/* Strong base gradient: black on left, solid bright red on right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-[#E60000] z-0 opacity-80"></div>
+    <main className="collage-container pt-0 px-4 overflow-hidden relative min-h-[90vh]">
+      {/* Background Layer - Full Hero Video (Desktop Only) */}
+      <div className="absolute top-20 left-0 w-full h-[calc(100%-5rem)] z-0 pointer-events-none overflow-hidden bg-black hidden md:block">
+        {/* The Burger Video occupying everything on desktop, starting below navbar */}
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="absolute inset-0 w-full h-full object-cover opacity-70 z-0" 
+          src="/assets/carbonara-video.mp4" 
+        />
+        
+        {/* Strong base gradient over the video for legibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-[#E60000]/30 z-10 opacity-80"></div>
         
         {/* Extra intense highlight on the right edge */}
+        <div className="absolute right-0 top-0 bottom-0 w-[40%] bg-gradient-to-l from-[#E60000]/60 via-[#E60000]/10 to-transparent z-20 mix-blend-screen"></div>
+        
+        {/* Subtle glow/blur overlay to make it feel integrated */}
+        <div className="absolute inset-0 backdrop-blur-[2px] z-30 opacity-30"></div>
+      </div>
+
+      {/* Mobile background (Solid black) - Also starting below top bar area */}
+      <div className="absolute top-20 left-0 w-full h-[calc(100%-5rem)] z-0 pointer-events-none bg-black md:hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-[#E60000] z-0 opacity-80"></div>
         <div className="absolute right-0 top-0 bottom-0 w-[40%] bg-gradient-to-l from-[#E60000]/80 via-[#E60000]/20 to-transparent z-10 mix-blend-screen"></div>
       </div>
 
-      <div className="relative z-10 flex flex-col md:block w-full h-full pb-0 md:pb-0 pt-20 md:pt-0">
+      <div className="relative z-40 flex flex-col md:block w-full h-full pb-0 md:pb-0 pt-24 md:pt-20">
         
         {/* =======================
             DESKTOP LAYOUT 
             ======================= */}
         <div className="hidden md:block">
           {/* Desktop-only Massive Text */}
-          <div className="flex text-massive text-white text-outline flex-col items-end mr-10 select-none mt-10">
+          <div className="flex text-massive text-white text-outline flex-col items-end mr-10 select-none mt-5">
             <span>BRO ON</span>
             <span className="text-brandRed">FIRE</span>
           </div>
 
-          <div className="absolute left-[-5%] top-[10%] w-[55%] z-20">
-            <video autoPlay loop muted playsInline className="w-full h-auto object-contain relative z-10" src="/assets/carbonara-video.mp4" />
-            <div className="absolute top-[10%] right-[10%] z-20 block">
-              <div className="bg-brandRed text-white p-4 rounded-full border-4 border-black sticker-rotate-left flex flex-col items-center justify-center w-40 h-40 text-center shadow-xl">
-                <span className="text-xl leading-none">THE FLAME<br/>CLUB</span>
-                <span className="text-[0.6rem] mt-2 leading-tight">JOIN THE BROHOOD<br/>AND GET BURNT</span>
-                <a className="bg-brandBlack text-white text-xs px-3 py-1 mt-2 rounded" href="#">JOIN NOW</a>
-              </div>
+          <div className="absolute left-[5%] top-[15%] z-20">
+            <div className="bg-brandRed text-white p-4 rounded-full border-4 border-black sticker-rotate-left flex flex-col items-center justify-center w-40 h-40 text-center shadow-2xl">
+              <span className="text-xl leading-none font-black font-impact">THE FLAME<br/>CLUB</span>
+              <span className="text-[0.6rem] mt-2 leading-tight">JOIN THE BROHOOD<br/>AND GET BURNT</span>
+              <a className="bg-brandBlack text-white text-xs px-3 py-1 mt-2 rounded" href="#">JOIN NOW</a>
             </div>
           </div>
           
-          <div className="absolute top-[40%] ml-[45%] max-w-xl z-30">
+          <div className="absolute top-[45%] ml-[45%] max-w-xl z-30">
             <div className="flex flex-col gap-4 w-full">
               <div className="flex items-center gap-4">
                 <span className="text-sm font-sans font-bold text-white text-bg-blur">@BROONFIRE_<br/></span>
@@ -44,7 +60,7 @@ const Hero = () => {
               </div>
               
               <div className="flex flex-col items-start relative mt-0">
-                <div className="bg-brandBlack text-brandRed inline-block px-8 py-4 text-6xl sticker-rotate-right border-4 border-brandRed shadow-2xl z-20 mb-0">
+                <div className="bg-brandRed text-white inline-block px-8 py-4 text-6xl font-impact sticker-rotate-right border-4 border-black shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] z-20 mb-0">
                   COLLECTION 01
                 </div>
                 
@@ -61,29 +77,25 @@ const Hero = () => {
             </div>
           </div>
           
-          <div className="relative mt-20 ml-10 max-w-2xl z-20">
-            <p className="text-xs font-sans font-bold mb-4 tracking-widest text-brandRed bg-black inline-block px-2">HERE'S OUR MENU /</p>
-            <div className="grid grid-cols-2 gap-x-12 gap-y-1 text-2xl leading-none text-white">
-              <a className="hover:text-brandRed transition-colors text-bg-blur inline-block w-fit" href="#">THE FLAMING TRIPLE /</a>
-              <a className="hover:text-brandRed transition-colors text-bg-blur inline-block w-fit" href="#">VOLCANO FRIES /</a>
-              <a className="hover:text-brandRed transition-colors text-bg-blur inline-block w-fit" href="#">BRO'S CHEESEBURGER /</a>
-              <a className="hover:text-brandRed transition-colors text-bg-blur inline-block w-fit" href="#">LAVA WINGS /</a>
-              <a className="hover:text-brandRed transition-colors text-bg-blur inline-block w-fit" href="#">THE INFERNO VEGAN /</a>
-              <a className="hover:text-brandRed transition-colors text-bg-blur inline-block w-fit" href="#">SMOKY BBQ RIBS /</a>
-              <a className="hover:text-brandRed transition-colors text-bg-blur inline-block w-fit" href="#">SPICY ONION RINGS /</a>
-              <a className="hover:text-brandRed transition-colors text-bg-blur inline-block w-fit" href="#">FIREBALL SHAKE /</a>
+          <div className="relative mt-24 ml-10 max-w-2xl z-20">
+            <p className="text-xs font-sans font-bold mb-4 tracking-widest text-white bg-brandRed inline-block px-2 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] uppercase">HERE'S OUR MENU /</p>
+            <div className="grid grid-cols-2 gap-x-12 gap-y-1 text-2xl leading-none text-white font-impact">
+              <a className="hover:text-brandRed transition-colors text-outline-small inline-block w-fit" href="#">THE FLAMING TRIPLE /</a>
+              <a className="hover:text-brandRed transition-colors text-outline-small inline-block w-fit" href="#">VOLCANO FRIES /</a>
+              <a className="hover:text-brandRed transition-colors text-outline-small inline-block w-fit" href="#">BRO'S CHEESEBURGER /</a>
+              <a className="hover:text-brandRed transition-colors text-outline-small inline-block w-fit" href="#">LAVA WINGS /</a>
+              <a className="hover:text-brandRed transition-colors text-outline-small inline-block w-fit" href="#">THE INFERNO VEGAN /</a>
+              <a className="hover:text-brandRed transition-colors text-outline-small inline-block w-fit" href="#">SMOKY BBQ RIBS /</a>
+              <a className="hover:text-brandRed transition-colors text-outline-small inline-block w-fit" href="#">SPICY ONION RINGS /</a>
+              <a className="hover:text-brandRed transition-colors text-outline-small inline-block w-fit" href="#">FIREBALL SHAKE /</a>
             </div>
           </div>
           
           <div className="absolute bottom-10 right-10 flex flex-col items-end gap-6 z-30">
-            <div className="bg-brandRed p-4 sticker-rotate-left shadow-2xl cursor-pointer hover:scale-105 transition-transform border-4 border-black">
+            <div className="bg-brandRed p-4 sticker-rotate-left shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] cursor-pointer hover:scale-105 transition-transform border-4 border-black font-impact">
               <p className="text-white text-4xl text-center leading-none">BIG ORDERS?</p>
               <p className="text-black text-center text-sm leading-none mt-1 font-bold">WANT TO FEED THE SQUAD?</p>
               <div className="bg-brandBlack text-white text-xs text-center p-1 mt-2">CLICK HERE</div>
-            </div>
-            <div className="flex gap-4">
-              <img alt="Merch" className="h-12 border-2 border-black bg-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8UCn3gy5H4VNBcuGDZ1aT_kiZc-Jt7Jr4Rmmkia--66tEMGnAcB1-EuyAkQKbqb5-GhxfYADihuSYIONH7BETaexH_Pq-lh6TH5ur1PpiX3nHzoXDGRbwexB8wbVM2gCHvgm94aDE5vVQvxK0ldbdCV6NtUBHzsu7Rt7vPPAeg0x-XOSWevxb0_V7krtN2rZFYq0uB853vJ3qEbupQYBocdD_yuA1KUHqlqwPDIzpokwrFc7HNabC9coyEU-YWzaOYnabG2wPI5o" />
-              <img alt="Limited" className="h-12 border-2 border-black sticker-rotate-right bg-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoSsbVZ9CEJyCw9cHkP2Ikj1aaTXycPQknYbXaQgyJ3LmnOqqqhuM0P8HuNrL7WfVOb8i_sW045Q62bHSWOlPYWW5qWV0SjyxYR3wxvN0oZ53uSbRHC3EX4GuNoBcf4RrHym6AQ3xDiEBEr5g4Zz3XbSCB95kVPHoTiPnsmwBd6_ircJVtv0tJSfWL__Lz_-h2EtiMvPKdanNfF16uWnZjaBqDmtu5qRcqtiJhloPaFOCeuBtYBWfFDwhKX3rjmfzEGRWMhSY_1-0" />
             </div>
           </div>
         </div>
@@ -93,7 +105,7 @@ const Hero = () => {
             ======================= */}
         <div className="md:hidden flex flex-col w-full min-h-[100vh] relative pt-0">
 
-          {/* Title - smaller, aligned right */}
+          {/* Title - original position */}
           <motion.div 
             initial={{ scale: 0.8, opacity: 0, y: -30 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -105,7 +117,7 @@ const Hero = () => {
             <span className="text-brandRed bg-black/60 px-4 mt-1 border-y-2 border-brandRed ml-[5vw]">FIRE</span>
           </motion.div>
 
-          {/* Burger video + stickers */}
+          {/* Original Contained Video + stickers */}
           <div className="relative w-full z-20 flex justify-center items-center">
 
             {/* Popular Fire - Controlled chaos pos 1 */}
@@ -115,10 +127,10 @@ const Hero = () => {
               transition={{ delay: 0.4, type: "spring" }}
               className="absolute -top-[2vh] left-4 z-40"
             >
-              <p className="text-[0.6rem] font-black tracking-widest text-white bg-brandRed px-2 py-1 border-2 border-black leading-none shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">POPULAR FIRE /</p>
+              <p className="text-[0.6rem] font-black tracking-widest text-white bg-brandRed px-2 py-1 border-2 border-black leading-none shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] uppercase">POPULAR FIRE /</p>
             </motion.div>
 
-            {/* Video */}
+            {/* Contained Video (Original Size) */}
             <motion.div
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1.1, opacity: 1 }}
@@ -143,7 +155,7 @@ const Hero = () => {
               transition={{ delay: 0.6, type: "spring" }}
               className="absolute bottom-[10%] left-0 z-30"
             >
-              <div className="bg-brandRed text-white rounded-full border-2 border-black flex flex-col items-center justify-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:scale-110 transition-transform" 
+              <div className="bg-brandRed text-white rounded-full border-2 border-black flex flex-col items-center justify-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:scale-110 transition-transform font-impact" 
                 style={{ width: '15vw', height: '15vw', minWidth: '50px', minHeight: '50px' }}>
                 <span className="text-[0.5rem] font-black leading-none text-center uppercase">THE<br/>FLAME<br/>CLUB</span>
               </div>
@@ -156,7 +168,7 @@ const Hero = () => {
               transition={{ delay: 0.8, type: "spring" }}
               className="absolute top-[20%] right-2 z-30 bg-brandYellow rounded-none flex items-center justify-center border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-2"
             >
-              <span className="text-black text-center font-black leading-tight uppercase" style={{ fontSize: '0.45rem' }}>CERTIFIED<br/>HOT AF</span>
+              <span className="text-black text-center font-black leading-tight uppercase font-impact" style={{ fontSize: '0.45rem' }}>CERTIFIED<br/>HOT AF</span>
             </motion.div>
           </div>
 
@@ -172,7 +184,7 @@ const Hero = () => {
                 <div className="duct-tape absolute -top-3 -left-4 -rotate-45 w-12 bg-gray-400"></div>
                 COLLECTION 01
               </div>
-              <p className="text-white font-sans text-[0.7rem] font-black tracking-widest bg-black/80 px-2 py-0.5 border-r-2 border-brandRed">@BROONFIRE_</p>
+              <p className="text-white font-sans text-[0.7rem] font-black tracking-widest bg-black/80 px-2 py-0.5 border-r-2 border-brandRed uppercase">@BROONFIRE_</p>
             </div>
           </motion.div>
 
