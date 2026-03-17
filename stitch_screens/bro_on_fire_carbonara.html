@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bro On Fire | The Hottest Burgers in Town</title>
+<!-- BEGIN: Tailwind CSS & Configuration -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandRed: '#E60000',
+            brandYellow: '#FFD700',
+            brandBlack: '#000000',
+            brandOffWhite: '#F2F2F2',
+          },
+          fontFamily: {
+            impact: ['Impact', 'Haettenschweiler', 'Arial Narrow Bold', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+<!-- END: Tailwind CSS & Configuration -->
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="typography">
+    .text-massive {
+      font-size: clamp(4rem, 15vw, 12rem);
+      line-height: 0.85;
+      letter-spacing: -0.05em;
+    }
+    .sticker-rotate-left { transform: rotate(-10deg); }
+    .sticker-rotate-right { transform: rotate(8deg); }
+    .text-outline {
+      text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 5px 5px 15px rgba(0,0,0,0.8);
+    }
+    .text-bg-blur {
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(4px);
+      padding: 0.2em 0.5em;
+    }
+  </style>
+<style data-purpose="layout-and-elements">
+    body {
+      background-color: #111;
+      overflow-x: hidden;
+    }
+    .collage-container {
+      position: relative;
+      min-height: 100vh;
+      width: 100%;
+    }
+    .burger-hero-img {
+      filter: drop-shadow(20px 20px 50px rgba(0,0,0,0.6));
+      z-index: 20;
+    }
+    .order-btn-glow:hover {
+      box-shadow: 0 0 25px rgba(230, 0, 0, 0.8);
+    }
+    /* Collage Background Elements */
+    .collage-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 10px;
+      padding: 10px;
+      opacity: 0.45;
+    }
+    .collage-item {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .collage-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: contrast(1.2) grayscale(0.5);
+    }
+    .duct-tape {
+      position: absolute;
+      background: #333;
+      height: 40px;
+      width: 120px;
+      opacity: 0.8;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+      z-index: 5;
+    }
+    .spray-paint {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(230,0,0,0.4) 0%, rgba(230,0,0,0) 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .paper-tear {
+      mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L100 0 L100 90 Q95 95 90 90 T80 95 T70 90 T60 95 T50 90 T40 95 T30 90 T20 95 T10 90 T0 95 Z" fill="black"/></svg>');
+      -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L100 0 L100 90 Q95 95 90 90 T80 95 T70 90 T60 95 T50 90 T40 95 T30 90 T20 95 T10 90 T0 95 Z" fill="black"/></svg>');
+      mask-size: 100% 100%;
+      -webkit-mask-size: 100% 100%;
+    }
+  </style>
+<!-- END: Custom Styles -->
+<style>
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style></head>
+<body class="font-impact text-brandBlack uppercase bg-black">
+<!-- Collage Background -->
+<div class="collage-bg">
+<div class="collage-item sticker-rotate-left"><img alt="Brohood" class="" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC3HTcCSOULpG7R44lcJAyZA-lim6PjEkamqs7OP3i66rkusm0A_P0jB4tdL9QfUr_OD6Uape4kFJZV76Ix0dYlWjqZgmfez0yz0ilqnTRczNG-OMrJNFnljO7uKCHmttjIoxcByLGYPIAKlVXcdH4Qp1lFVWaXIzRi8kn1exINl483m6PL1C1jFYkjApaJDSGYJw7u6lMy9Ib29m3aGrKI-CF2ugZF9R_xRB-ZdHYL4-GyP4iVDXuVyOd87apaA2UARLe6VbIabE" style=""/></div>
+<div class="collage-item grayscale"><img alt="Hanging out" class="" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAU7NaBCtMc75CPEyIyI7R3ApFAWd0FTXXIFod7gt4JafOENoHNYxz7KLVOkjVMM1rqgO5ld84czNxZB7jQdSU6mHcWUcelktDR212sw6RAXAn7vGfrmXWjSJppZdVHWTFKZEigzyFQejIFWmd2bA_zjOlgIsIuvR9ZNck-t5sr2Ed86Tw8-w5LhCaBT-6p4Q3Ko53E0tltm7N-u7M3n3kXFgP0aaFPq8XAw2jCVaUt3MW4OzxJujb3xQRWxyRRAUxWNrhiB_Cwo8" style=""/></div>
+<div class="collage-item sticker-rotate-right"><img alt="Squad" class="" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM67X3zg5nFBUjWN66wrPad_S8adlDowvnQVLQ1mjxCh2fn2GpJSXnbgUA_uLPgf1g5F9FXOVvoP8wWShCoCsdWzzl05a1hYZWtSEk8BDrDcK1Fs7q_0pU5GnpSzvo0wJRlg2Fxv14JMPnpKOP_6AY0jFNVKP6OaubH59RJ4hFJoj6prirwM7EY0mAUcl7Sd8O9r_x33GFCirajjkBqfAMMqR2tZmkx2G9GvimE03IQsakT-C9k7nyQ2QISwPOMwmje4zf6NMXH2o" style=""/></div>
+<div class="collage-item"><img alt="Eating burgers" class="" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgkC1-O06cEVUnLo77VX-i6VhsUben4f-0NH3pxw91xLfzc_KPHlKnIX9btpBfrOSUPoGQk8spEkKzIoPRj6qpu5FDCdoK1klSmMLw2lITywnpkUlDNNHoB8GNn2nP2GjoNT2tkcVGpLaaW4jToLDKo7HbRszmzyoZ9f9_I4sheT6t2ruJQtWltE9gx3EDrACDSsHeajEqipsnfDlAH-Gy0A1jubPGsAZFfDK_41khc_1-6V10-7jt0Rw_wkhE3Y4TrojdV5YkLcQ" style=""/></div>
+<div class="collage-item sticker-rotate-left"><img alt="Vibes" class="" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_W8x_VN2veCPIl_n1aFIrGrdxDDASTCw92Llkanjhq89gvKk1eMki9qJPu56aZmNb6l_MXTSaW_rE-JkYHymCuki6G7rzQTMKrPdB0gVtERiKECmw5XUlnGJW-OP9XAFaYDHnucDHx8-4bACa56C_Afrh89TDk5ZIqLbcC1-nT4xk_JF_CzolEdpO6jLNNYiojfT_eDL8W5UN1zONqyB4epddi4J6-ru3t6oomkQrXkhpEQ1pFtFhki2L6GzLqqTqDv1cKKd3Oc0" style=""/></div>
+<div class="collage-item grayscale sticker-rotate-right"><img alt="Urban Street" class="" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPxxFsNIXaALwNI-5FkVNz9MPsMkn--h7_9ZLCLfIAloUQHaiwBQ16JPLpyIOmTfg1XDylhp9KInHg14FtvA6bOgWSi-tmff1dgN1Qc8nerp-iJlPQ_0O9FTcAZXh38DIg9p_J5MYtOBK8iKIvnCwtrOVgzmTCnRmvo7USbtXH_1wz76g9wXyRYbII-Wp6M5fetFkq6swfVn84ZPy252LUONvaQPFZ3nlI0sHaJyui7wkccpl-qmX0FMa7cUYVv7lOYdrEUvA_EyI" style=""/></div>
+<div class="collage-item"><img alt="Squad Goals" class="" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6F9ASWsMDV6ezYXCFcc8oe5w2x3VniutFKlaIH8_ESRDZa8QpxcYus5Eyoi9eE1q5rHtyaj6fRmsAqOWFsvTialu0VuVGdKWCMey-OZWqKOyxALZ-NaJ3jkF9y0KHLjnhfuBwsi8isib1wq2hsZFHemIVn6i-ItC4SRlOu-FZZ64__B2hE_sbwqjZ9G3_LPdHWYK_1EMeJjxxiU6M8CVGTvJlPmf-Bgx6qY_sk9CKkRKY4jc4THdAwfzigcDAo3RIBEhy1_53X8M" style=""/></div>
+<div class="collage-item sticker-rotate-left"><img alt="Burger Night" class="" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdOwOWVI_onjA4dP_fpVQ5wUekdcwfV5iKlg6c9_cHMaYLLFuSAIHhKqCEntseb2bINe4DIjMcvJQwY1bU5dGz2xqLU4F9DnY8QfmF7ce9JNN1tPTEkGvDAOO4wQRSOltXUdpR82lrNb1-waGagkjq9-HxVZo4YD2F0NeHfLzon6nFN5law-4bfNkJUtF5PdcXjT3d_hDMrIOP6x5ZtzQMV5Wew4njLOaVojcAwKMx_YogZNIN7oUPPpZJ_RLjuWmO2RZPPtR6OCI" style=""/></div>
+<div class="collage-item grayscale"><img alt="Food Prep" class="" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmNa7RWVJz68wkU5nSOQzxxRjM65NXI8xc_KsKuRbScEWcOQyrG6yrfpQOEu9lPeNebkVf1fdS4H8f9RNKmSg0f4CeIxjRJwgk3DAjSlyqtmDQpO9UrGUpodwviDralMzUzDtwc2mf0-exVnHbUyKMN50BNl8Hk7DKv7XD_s4PXV1ay7WQ31C8-Q0936oTbDnlbc7msreHfEBRrioUp88XAJVFxeDXrWSlJn8aA60kq0ZGBKqTPttIxUMqivry802_MPC7WP4Caqk" style=""/></div>
+<div class="collage-item sticker-rotate-right"><img alt="Burger Detail" class="" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9OEF5xOL53v9Vp1YQ-frVm8ywxyUnhKWyCKJL2ceLKyz5xFAYOz6mwwX2VgMi0VpdwzEy6EiFFOrpB_S2eNftRArA4TKQwhKdjAjsS5RabQ_de7wYRJAotOSFyuIiD_ddrkZsLRbh5myN6OY2nXgZZb8BebsPADbqKA7qAkwQ-5hUDaFdrdoD6Yzdvaj3dCwN3Sgx53znjvT_pUBjsdaYp3v_NFmxXF-ccetoK5HqWliAghEOoAdMeWvG9ce0hPCf9u_usKefhEY" style=""/></div>
+<div class="collage-item sticker-rotate-left"><img alt="Friends laughing" class="" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGe6wNEODEn1e7LOPHLcJJ6mSzi4Z2gyE60CME-_2-L0Zfb2w5UvLe26qJSTqgC7oDpMi42N1D4JtM3YhaJuFzxtafF65Fg4dijV2YhHLBOZ02MrPkX63_kE0kEIVOx8xzgssdaHkrcGKdnv27ekJkkz_7r7w--gx8sMmUBCGMHBpa7glITOo8gjbR80HZC_pgrxa8ZtzMZTKlGmaM5awlbM7reCBTMnit12HRpGOdsNiOf0vjMN7gNZpwpFKCzyUMAyX7C3AJPTg" style=""/></div>
+<div class="collage-item"><img alt="Urban style" class="" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCsffQwN1EsfwjcvysGQIKL6A1le14NgUNxs0HBLHAFZ59Q4P3B0NgGe08HQ58OiedS3SIlowXaB7sEwKO3LDvD8CwWIjyFWPPFBUUsqJ1k-0tcoYmaK0tTUjRw-BSqoP0SLQZjBhH7ZfXv7HDVFQP-He0g3TQNrmDVM2SuiLqHR3wU-UAfeowdeKaNdzDwDfG6-M7gBfxiTTgIy91KA-0wJW0211Uz3jp2DwHf0rO3qTmwXYEgrZnwStqZHZupW6aD-r1PPQLsjU" style=""/></div>
+</div>
+<!-- Textural Overlays -->
+<div class="spray-paint top-[-5%] left-[10%]"></div>
+<div class="spray-paint bottom-[20%] right-[15%]"></div>
+<div class="duct-tape top-20 left-40 rotate-12"></div>
+<div class="duct-tape bottom-40 right-1/4 -rotate-45"></div>
+<!-- BEGIN: MainHeader -->
+<header class="fixed top-0 left-0 w-full z-50 p-6 flex justify-between items-center mix-blend-difference text-white">
+<div class="text-3xl font-bold tracking-tighter" data-purpose="brand-logo" style="">
+      BRO ON FIRE<span class="text-brandRed" style="">™</span>
+</div>
+<div class="flex items-center gap-8">
+<p class="hidden md:block text-xs text-right leading-none max-w-[150px]" style="">
+        THE FLAMING TRIPLE IS THE HOTTEST BURGER TODAY.
+      </p>
+<a class="order-btn-glow bg-brandRed text-white px-6 py-2 rounded-full flex items-center gap-2 border-2 border-brandRed hover:bg-white hover:text-brandRed transition-all duration-300" href="#" style="">
+        ORDER NOW! 
+        <svg class="h-5 w-5 fill-current" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.684 2.36C16.193.541 13.92 0 11.91 0c-3.14 0-5.83 2.083-6.42 5.092-.12.633-.07 1.258.11 1.834.42 1.332 1.48 2.296 2.05 3.468.61 1.25.4 2.822-.19 3.993a4.79 4.79 0 0 1-2.07 2.053c-1.12.597-2.39.815-3.66.685C.855 17.03 0 17.817 0 18.784c0 1.05.903 1.896 1.95 1.896 1.15 0 2.25-.333 3.19-.948 1.41-.92 2.35-2.454 2.65-4.113.04-.246.06-.496.06-.745 0-1.11-.27-2.13-.73-3.037-.47-.92-1.09-1.742-1.28-2.766-.19-1.02.16-2.043.91-2.793.89-.893 2.26-1.153 3.42-.647 1.22.533 2.01 1.734 2.01 3.076 0 1.487-1 2.842-2.37 3.33a.987.987 0 0 0-.61 1.272c.16.48.69.734 1.17.574 2.45-.867 4.23-3.267 4.23-6.023 0-.41-.04-.813-.12-1.213-.13-.6-.35-1.173-.66-1.706C12.92 6.13 12 4.673 12 3.13c0-.42.06-.84.17-1.243.01-.04.03-.076.04-.116 1.11.453 2.01 1.346 2.5 2.51.53 1.267.43 2.707-.27 3.88-.6 1.013-.88 2.2-.77 3.38.1 1.147.62 2.213 1.45 2.993 1.54 1.447 4.01 1.633 5.76.43 1.41-.967 2.12-2.613 1.85-4.293-.32-2.02-1.93-3.707-3.63-4.72-.16-.093-.32-.18-.49-.26-.17-.08-.32-.186-.49-.24-.13-.04-.23-.13-.34-.18-.11-.05-.21-.13-.33-.173l-.27-.08z"></path></svg>
+</a>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: MainContent -->
+<main class="collage-container pt-32 px-4 overflow-hidden relative">
+<!-- Hero Burger Image Layer -->
+<div class="absolute left-[-5%] top-[10%] w-[55%] burger-hero-img">
+<img alt="Hero Burger" class="w-full h-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCliVKDX8sZpC_0RBCdTl6nPcLHAfmFfOv81fKWvfe-JDhXNFJybuby4WvR05_CAcWhzxL0zHqnMGZdf1T4JuMqrah_lQBgwUnm4DvODRLDPe-W-RcEvRRABot17smiW851P36DuWzoQGK3LTo4nZ4lZdXIXhVBz45kv-R-4BH9JUaH49R8VEN7Rh3A93q_dRKDbRDcyf3srI1ScE3ryRNVllQZrdbi9hNyv-Jz1YnUsoqp-BR3xSM7-ffv_LwD4vR61-CeofxCmCU" style=""/>
+<!-- Over-Image Sticker -->
+<div class="absolute top-[10%] right-[10%] z-20">
+<div class="bg-brandRed text-white p-4 rounded-full border-4 border-black sticker-rotate-left flex flex-col items-center justify-center w-40 h-40 text-center shadow-xl">
+<span class="text-xl leading-none" style="">THE FLAME<br/>CLUB</span>
+<span class="text-[0.6rem] mt-2 leading-tight" style="">JOIN THE BROHOOD<br/>AND GET BURNT</span>
+<a class="bg-brandBlack text-white text-xs px-3 py-1 mt-2 rounded" href="#" style="">JOIN NOW</a>
+</div>
+</div>
+</div>
+<!-- Big Background Text Layers -->
+<div class="relative z-10">
+<div class="text-massive text-white text-outline flex flex-col items-end mr-10 select-none">
+<span class="" style="">BRO ON</span>
+<span class="text-brandRed" style="">FIRE</span>
+</div>
+</div>
+<!-- Middle Info Section -->
+<div class="relative z-30 mt-[-5%] ml-[45%] max-w-xl">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-4">
+<span class="text-sm font-sans font-bold text-white text-bg-blur" style="">@BROONFIRE_<br/></span>
+<div class="h-[1px] bg-white flex-grow opacity-50"></div>
+</div>
+<div class="relative mt-4">
+<div class="bg-brandBlack text-brandRed inline-block px-8 py-4 text-6xl sticker-rotate-right border-4 border-brandRed shadow-2xl" style="">
+            COLLECTION 01
+          </div>
+<div class="relative mt-4">
+<div class="duct-tape -top-4 -left-8 -rotate-12 bg-gray-400 opacity-90"></div>
+<img alt="Model" class="w-64 h-80 object-cover grayscale hover:grayscale-0 transition-all border-4 border-white shadow-2xl paper-tear" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZiIE9O_-uHGCuzWi_ahbozT_zFK4wxtLB3TlP5eQDiJN74FKt4ZlZ2UuovPtGj9fXxj4vzZ01H1CEHrN1rUvjGPm5RGZl2EI8_2--BcIzHL8tZpx-0Zw7_vZDBIbbdcA0mg420KG4woPK9pKS3Afb1_Ssm8Lrr0QtpE9so0qvn8i-xhWlIFwtrDoES1NQSCzjHvIrUVf8BFhmlB262Qo_4gfE4JLY3ShdqzjYKXMH6e86S5I-zwn2yeIyr3Aed8FewpbaGxf4FDg" style=""/>
+<div class="duct-tape -bottom-2 -right-6 rotate-6 bg-gray-500"></div>
+</div>
+<!-- Abstract Sticker -->
+<div class="absolute bottom-[-20px] left-[-40px] z-30 w-24 h-24 bg-brandYellow rounded-lg flex items-center justify-center border-2 border-black sticker-rotate-left">
+<span class="text-black text-center text-xs font-bold" style="">CERTIFIED<br/>HOT AF</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Menu List Text -->
+<div class="relative mt-20 ml-10 max-w-2xl z-20">
+<p class="text-xs font-sans font-bold mb-4 tracking-widest text-brandRed bg-black inline-block px-2" style="">HERE'S OUR MENU /</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-1 text-xl md:text-2xl leading-none text-white">
+<a class="hover:text-brandRed transition-colors text-bg-blur inline-block w-fit" href="#" style="">THE FLAMING TRIPLE /</a>
+<a class="hover:text-brandRed transition-colors text-bg-blur inline-block w-fit" href="#" style="">VOLCANO FRIES /</a>
+<a class="hover:text-brandRed transition-colors text-bg-blur inline-block w-fit" href="#" style="">BRO'S CHEESEBURGER /</a>
+<a class="hover:text-brandRed transition-colors text-bg-blur inline-block w-fit" href="#" style="">LAVA WINGS /</a>
+<a class="hover:text-brandRed transition-colors text-bg-blur inline-block w-fit" href="#" style="">THE INFERNO VEGAN /</a>
+<a class="hover:text-brandRed transition-colors text-bg-blur inline-block w-fit" href="#" style="">SMOKY BBQ RIBS /</a>
+<a class="hover:text-brandRed transition-colors text-bg-blur inline-block w-fit" href="#" style="">SPICY ONION RINGS /</a>
+<a class="hover:text-brandRed transition-colors text-bg-blur inline-block w-fit" href="#" style="">FIREBALL SHAKE /</a>
+</div>
+</div>
+<!-- Bottom Stickers & CTA -->
+<div class="absolute bottom-10 right-10 flex flex-col items-end gap-6 z-30">
+<div class="bg-brandRed p-4 sticker-rotate-left shadow-2xl cursor-pointer hover:scale-105 transition-transform border-4 border-black">
+<p class="text-white text-4xl text-center leading-none" style="">BIG ORDERS?</p>
+<p class="text-black text-center text-sm leading-none mt-1 font-bold" style="">WANT TO FEED THE SQUAD?</p>
+<div class="bg-brandBlack text-white text-xs text-center p-1 mt-2" style="">CLICK HERE</div>
+</div>
+<div class="flex gap-4">
+<img alt="Merch" class="h-12 border-2 border-black bg-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8UCn3gy5H4VNBcuGDZ1aT_kiZc-Jt7Jr4Rmmkia--66tEMGnAcB1-EuyAkQKbqb5-GhxfYADihuSYIONH7BETaexH_Pq-lh6TH5ur1PpiX3nHzoXDGRbwexB8wbVM2gCHvgm94aDE5vVQvxK0ldbdCV6NtUBHzsu7Rt7vPPAeg0x-XOSWevxb0_V7krtN2rZFYq0uB853vJ3qEbupQYBocdD_yuA1KUHqlqwPDIzpokwrFc7HNabC9coyEU-YWzaOYnabG2wPI5o" style=""/>
+<img alt="Limited" class="h-12 border-2 border-black sticker-rotate-right bg-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoSsbVZ9CEJyCw9cHkP2Ikj1aaTXycPQknYbXaQgyJ3LmnOqqqhuM0P8HuNrL7WfVOb8i_sW045Q62bHSWOlPYWW5qWV0SjyxYR3wxvN0oZ53uSbRHC3EX4GuNoBcf4RrHym6AQ3xDiEBEr5g4Zz3XbSCB95kVPHoTiPnsmwBd6_ircJVtv0tJSfWL__Lz_-h2EtiMvPKdanNfF16uWnZjaBqDmtu5qRcqtiJhloPaFOCeuBtYBWfFDwhKX3rjmfzEGRWMhSY_1-0" style=""/>
+</div>
+</div>
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: Footer Section (Lifestyle) -->
+<section class="py-20 bg-brandBlack text-white overflow-hidden relative">
+<div class="px-10 mb-10 flex justify-between items-end relative z-10">
+<h2 class="text-6xl md:text-8xl leading-none tracking-tighter uppercase text-outline" style="">
+      LIVING THE<br/><span class="text-brandRed" style="">BROHOOD</span>
+</h2>
+<div class="hidden md:block text-right mb-2">
+<p class="text-xs font-sans font-bold uppercase tracking-widest text-brandYellow" style="">// JOIN THE CREW</p>
+<p class="text-sm" style="">@BROONFIRE_OFFICIAL</p>
+</div>
+</div>
+<div class="flex gap-6 overflow-x-auto pb-10 px-10 no-scrollbar snap-x cursor-grab active:cursor-grabbing relative z-10">
+<div class="flex-none w-[300px] md:w-[450px] snap-center">
+<div class="relative aspect-[4/5] overflow-hidden border-4 border-white grayscale hover:grayscale-0 transition-all duration-500 paper-tear shadow-2xl">
+<img alt="Urban vibe" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-yz3itfbsq3S9k9_qtz4iCj-3bhGhrR1Kn5Uoo92e42YdkXmvcqjSOF17iWuMm2ywJk9K2grERox9ejYdjaAq3h5ZZ_BV9M5JfrZx-xMdBuWEbhoYmeL2F_cM5SofVEa8nd6WSONNI-6bnK4F5PS9-vQ12PuDDTyDA9k1HYV0DlIaqzR-_4gT7TJJyhWlF8GL0JOWDFiSZ3P42R9fANCESPwGCrmOZtz2At1kX-wMdoqUfriDo7GwXTpY9bZTUg5c9w0uECwgwq8" style=""/>
+<div class="absolute top-4 right-4 bg-brandRed text-white px-3 py-1 text-sm sticker-rotate-right font-bold" style="">LIT</div>
+<div class="duct-tape -top-2 left-10 rotate-3 bg-gray-600 w-20"></div>
+</div>
+</div>
+<div class="flex-none w-[300px] md:w-[450px] snap-center">
+<div class="relative aspect-[4/5] overflow-hidden border-4 border-white grayscale hover:grayscale-0 transition-all duration-500 paper-tear shadow-2xl">
+<img alt="Friends eating" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgWPxxtB9jHeNuHrLvGL3bvAPsaX0AtMOAFNz0S9TaMASnLbuXMBoWDdhII9gfIcJcEnpALB5pXXUwv1BfxvWBqT_ZnKCgQ7Ix8maTp9T5CELxXOA2aL1V3r5aDNB-_LHBh96B3eMfdIBsE1BbGKVo_ighghOOsoxmv31_VGhg6oBU23AwR1x47QSv_R3eqHR1IJlpsSdF2kNcqDuEknoFAcH6tvcMpiq1oVroFLuvka9P9yJmzKb7gMUcdZoyz-_xUybjx_m4TYQ" style=""/>
+<div class="absolute bottom-10 -left-5 bg-brandYellow text-black px-4 py-2 text-xl sticker-rotate-left font-bold shadow-lg" style="">SQUAD GOALS</div>
+</div>
+</div>
+<div class="flex-none w-[300px] md:w-[450px] snap-center">
+<div class="relative aspect-[4/5] overflow-hidden border-4 border-white grayscale hover:grayscale-0 transition-all duration-500 paper-tear shadow-2xl">
+<img alt="Burger moment" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ4cmFzrpZHCnJO6ZS1me9jNHj4ru7OTNvwaL8F-OleP-1xfq_1yPj1JSUkly1NU_I9QScIFYzxKbkQptWmptIXZhJ0f1kS9xzeoz5pQkOIk13hMrX8UyDQFNGIdMGFeBYqEESVSTwqa7BK7nK-_MYuEtUFV00t0WuE2EGTSGDAvLc5Mg6MuAwdG-qxhsZJDQYmhx8oyxHdlsMy0-ZKwc9DwhuqBvQzYBwXzBufHFHDCm9R3bj0OOzDDIk9o9_F8I5OtGADW1oWFo" style=""/>
+<div class="absolute top-1/2 -right-8 bg-brandRed text-white px-6 py-2 text-3xl sticker-rotate-right font-bold shadow-lg" style="">FIRE</div>
+</div>
+</div>
+<div class="flex-none w-[300px] md:w-[450px] snap-center">
+<div class="relative aspect-[4/5] overflow-hidden border-4 border-white grayscale hover:grayscale-0 transition-all duration-500 paper-tear shadow-2xl">
+<img alt="Night out" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBf1cy2ylLbRBu6LZOl28WZr2ULhMDo41Ev0mpU9wjVFaKODhDmkNiGXWZb460lQ96CZ1rOxOEPeQLOBk6W2Ma0bzDX_qr-ghrL_EiZqQEYtNT1jh51htyoARcUtIyQxdtahUOS0nTDBojPs8ZZcOS2SO-OfH1wSb6_WoIvNt-DVlWYw98lcY45APjflLSRsWZnbAE-0HbuicBEoF_hbcLXK7t473ojTHwXxdAaHl45xLi9RMbIN2neqI13-19TdVC-yvkfO13QsGg" style=""/>
+<div class="absolute top-4 left-4 bg-white text-black px-3 py-1 text-sm font-bold" style="">2:00 AM</div>
+<div class="duct-tape bottom-10 -right-5 rotate-45 bg-gray-500 w-32"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="p-8 border-t-2 border-black bg-white relative z-20">
+<div class="flex flex-wrap justify-between items-end gap-8">
+<nav class="flex flex-wrap gap-x-10 gap-y-4 text-xl" data-purpose="footer-nav">
+<a class="hover:underline" href="#" style="">BURGERS</a>
+<a class="hover:underline" href="#" style="">SIDES</a>
+<a class="hover:underline" href="#" style="">MERCH</a>
+<a class="hover:underline" href="#" style="">STORES</a>
+<a class="hover:underline" href="#" style="">THE BROHOOD</a>
+</nav>
+<div class="flex flex-col items-end gap-4">
+<div class="flex gap-4">
+<a class="text-2xl" href="#" style="">IG</a>
+<a class="text-2xl" href="#" style="">TT</a>
+<a class="text-2xl" href="#" style="">TW</a>
+</div>
+<div class="flex gap-6 text-[10px] tracking-tighter">
+<a class="" href="#" style="">LEGAL STUFF</a>
+<a class="" href="#" style="">COOKIES</a>
+<a class="" href="#" style="">PRESS KIT</a>
+<div class="border border-black px-2 rounded-full" style="">EN / ES</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: Footer -->
+</body></html>

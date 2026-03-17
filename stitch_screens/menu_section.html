@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "brandRed": "#E60000",
+                        "brandYellow": "#FFD700",
+                        "brandBlack": "#000000",
+                        "brandOffWhite": "#F2F2F2",
+                    },
+                    fontFamily: {
+                        "impact": ['Impact', 'Haettenschweiler', 'Arial Narrow Bold', 'sans-serif'],
+                        "display": ["Public Sans"]
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .text-massive {
+            font-size: clamp(3.5rem, 12vw, 10rem);
+            line-height: 0.85;
+            letter-spacing: -0.05em;
+        }
+        .text-outline {
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+        .sticker-rotate-left { transform: rotate(-8deg); }
+        .sticker-rotate-right { transform: rotate(5deg); }
+        .duct-tape {
+            background: #333;
+            height: 30px;
+            width: 100px;
+            opacity: 0.8;
+            z-index: 5;
+        }
+        .paper-tear {
+            mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L100 0 L100 90 Q95 95 90 90 T80 95 T70 90 T60 95 T50 90 T40 95 T30 90 T20 95 T10 90 T0 95 Z" fill="black"/></svg>');
+            -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L100 0 L100 90 Q95 95 90 90 T80 95 T70 90 T60 95 T50 90 T40 95 T30 90 T20 95 T10 90 T0 95 Z" fill="black"/></svg>');
+            mask-size: 100% 100%;
+            -webkit-mask-size: 100% 100%;
+        }
+        body { background-color: #000; }
+    </style>
+</head>
+<body class="font-impact text-white uppercase antialiased">
+<!-- Navigation -->
+<header class="fixed top-0 left-0 w-full z-50 p-6 flex justify-between items-center mix-blend-difference">
+<div class="text-3xl font-bold tracking-tighter">
+        BRO ON FIRE<span class="text-brandRed">™</span>
+</div>
+<div class="flex items-center gap-8">
+<nav class="hidden md:flex gap-6 text-sm tracking-widest">
+<a class="hover:text-brandRed" href="#">MENU</a>
+<a class="hover:text-brandRed" href="#">STORES</a>
+<a class="hover:text-brandRed" href="#">MERCH</a>
+</nav>
+<a class="bg-brandRed text-white px-6 py-2 rounded-full border-2 border-brandRed hover:bg-white hover:text-brandRed transition-all duration-300 text-sm font-bold" href="#">
+            ORDER NOW!
+        </a>
+</div>
+</header>
+<main class="pt-32 px-4 md:px-10">
+<!-- Hero / Title -->
+<div class="relative mb-20">
+<h1 class="text-massive text-white">THE BRO<br/><span class="text-brandRed">MENU</span></h1>
+<p class="max-w-xl mt-4 text-xl md:text-2xl font-sans tracking-tight leading-tight text-white/80 lowercase italic font-bold">
+            smash burgers that hit harder than your pre-workout. no fluff, just fire.
+        </p>
+</div>
+<!-- Category Filter -->
+<div class="flex flex-wrap gap-4 mb-20 border-b border-white/20 pb-10">
+<button class="bg-brandRed text-white px-8 py-2 rounded-full text-2xl hover:bg-white hover:text-brandBlack transition-colors">BURGERS</button>
+<button class="border-2 border-white px-8 py-2 rounded-full text-2xl hover:bg-brandYellow hover:text-brandBlack hover:border-brandYellow transition-colors">SIDES</button>
+<button class="border-2 border-white px-8 py-2 rounded-full text-2xl hover:bg-brandYellow hover:text-brandBlack hover:border-brandYellow transition-colors">LOADED</button>
+<button class="border-2 border-white px-8 py-2 rounded-full text-2xl hover:bg-brandYellow hover:text-brandBlack hover:border-brandYellow transition-colors">SHAKES</button>
+</div>
+<!-- Menu Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24 mb-32">
+<!-- Item 1 -->
+<div class="relative group">
+<div class="relative aspect-square overflow-hidden mb-6 paper-tear grayscale hover:grayscale-0 transition-all duration-700">
+<img alt="Burger" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFIKhiDTd6RINnSRrq_xHY8ZGaUQ3bWDi4qzD_tli7E6dEkR54VBcuqGCbgoahn0o3-jAX15K5aZKF8lh2QVEFCZep6n3QRgD6SNWUmAcMogmsXkJTOInwq4jUnSAltKZCmbQhVuEj9Yb0-K9GhtW65a2m5mSw-BuGG6DlA7vbTyMekDgvAiPypTC2Cikie1UvhKQg_KmdDMw02yvy6SSK7FYPEob9NrVugf9wmJhykub7LFhfIxmfrzHSQssFDwIOTAuqc7QXuHk"/>
+<div class="absolute top-4 left-4 bg-brandRed text-white px-3 py-1 text-sm sticker-rotate-left font-bold">HOT AF</div>
+<div class="duct-tape absolute -top-2 right-10 rotate-12"></div>
+</div>
+<div class="flex justify-between items-end mb-4">
+<h3 class="text-4xl leading-none">THE FLAMING<br/>TRIPLE</h3>
+<span class="text-2xl text-brandRed">$16.99</span>
+</div>
+<p class="font-sans lowercase text-sm text-white/60 mb-6 leading-tight max-w-xs">triple beef, ghost pepper cheese, spicy aioli, jalapeño crunch, scorched onions.</p>
+<button class="w-full border-2 border-white py-4 text-xl hover:bg-white hover:text-black transition-all font-bold">ADD TO BAG /</button>
+</div>
+<!-- Item 2 -->
+<div class="relative group mt-10 md:mt-0">
+<div class="relative aspect-square overflow-hidden mb-6 paper-tear grayscale hover:grayscale-0 transition-all duration-700">
+<img alt="Burger" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqWpEjwHhjiS8snED355Sc02Lejo_6F9HTDXVG3ZBZNVEj-LJPYJpsgolYmecebLryAMjFIwwXHieqlmtgAecI8AMMMgIFKN9aKug-BHYerEb1GcHEee7Ebby4lek5dU36z91Uzx9-A7_wsG41NKLW0FpFG-vp2erLNoAtgS_Pxx218r423MAdWOWGC8TfW9i1ZEY6DxDbdP5hP70TBKnaDXa2nYvqDG60oozBMnT2EA7nba1cXH4SgpvBr0N08wU_Z2_bRV8k1F0"/>
+<div class="absolute bottom-4 right-4 bg-brandYellow text-black px-3 py-1 text-sm sticker-rotate-right font-bold">BEST SELLER</div>
+<div class="duct-tape absolute -bottom-4 left-1/4 -rotate-6 bg-gray-600"></div>
+</div>
+<div class="flex justify-between items-end mb-4">
+<h3 class="text-4xl leading-none">BRO'S CHEESE<br/>BURGER</h3>
+<span class="text-2xl text-brandRed">$12.99</span>
+</div>
+<p class="font-sans lowercase text-sm text-white/60 mb-6 leading-tight max-w-xs">double patty, extra cheddar, secret sauce, house pickles, toasted brioche.</p>
+<button class="w-full border-2 border-white py-4 text-xl hover:bg-white hover:text-black transition-all font-bold">ADD TO BAG /</button>
+</div>
+<!-- Item 3 -->
+<div class="relative group lg:mt-20">
+<div class="relative aspect-square overflow-hidden mb-6 paper-tear grayscale hover:grayscale-0 transition-all duration-700">
+<img alt="Burger" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpLImulWRoG6Sq0HZK2PnxdJ2BEswb37nBl5vXupayyoy8ti8LdrYTgeMlyb0ob8XiTDyL0xjgKamnqniwoFuo7vhS9vPKPh-BozIuWZA-kaPx03U8r75GeDurYO0d4TjusoA1_owJ0syvBdYsU6hLJQV4WAv_WV8HKTl-DhsiGpnflvRT42dZFzizJT6bJQrobQFGNoa9IbRls5UEmLbFwH_vyMlXlShFjwOO1fvkHHuzK5Sk5ARWhK6k0G1dUGi5-nBW8L8M8ho"/>
+<div class="absolute top-1/2 -left-4 bg-brandRed text-white px-4 py-2 text-xl sticker-rotate-left font-bold">NEW DROP</div>
+</div>
+<div class="flex justify-between items-end mb-4">
+<h3 class="text-4xl leading-none">CARBONARA<br/>SMASH</h3>
+<span class="text-2xl text-brandRed">$15.50</span>
+</div>
+<p class="font-sans lowercase text-sm text-white/60 mb-6 leading-tight max-w-xs">crispy bacon, pecorino, egg yolk drizzle, black pepper, smashed beef.</p>
+<button class="w-full border-2 border-white py-4 text-xl hover:bg-white hover:text-black transition-all font-bold">ADD TO BAG /</button>
+</div>
+</div>
+<!-- Promo / Newsletter Collage Section -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-32">
+<div class="relative bg-brandRed p-10 paper-tear sticker-rotate-left overflow-hidden h-[400px] flex flex-col justify-center">
+<h2 class="text-7xl md:text-8xl leading-none text-white text-outline mb-4">BURNER<br/>DEALS</h2>
+<p class="text-xl font-bold mb-8">GET 2X FLAMING TRIPLES + LOADED FRIES FOR $30.</p>
+<button class="bg-black text-white self-start px-10 py-4 text-xl hover:bg-white hover:text-black transition-all">CLAIM DEAL</button>
+</div>
+<div class="relative bg-brandOffWhite p-10 border-4 border-black flex flex-col justify-center items-center text-center">
+<div class="duct-tape absolute -top-4 left-1/2 -translate-x-1/2"></div>
+<h3 class="text-brandBlack text-6xl leading-none mb-6">JOIN THE<br/>PIT</h3>
+<p class="text-brandBlack font-sans font-bold text-sm mb-8 uppercase tracking-widest">// DROP ALERTS &amp; SECRET MENU</p>
+<div class="w-full flex border-4 border-black">
+<input class="flex-grow bg-white p-4 text-black font-bold focus:outline-none uppercase border-none" placeholder="YOUR EMAIL" type="email"/>
+<button class="bg-black text-white px-8 py-4 font-bold hover:bg-brandRed transition-colors">GO</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-brandBlack border-t border-white/10 p-10 md:p-20">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-20">
+<div>
+<h2 class="text-6xl md:text-8xl text-outline mb-4">BRO ON<br/><span class="text-brandRed">FIRE</span></h2>
+<p class="font-sans lowercase text-white/40 max-w-xs font-bold italic">real burgers. real heat. no compromises. founded in a backyard, fueled by the street.</p>
+</div>
+<div class="flex flex-col gap-8 md:text-right md:items-end">
+<nav class="flex flex-col gap-2 text-3xl">
+<a class="hover:text-brandRed" href="#">BURGERS /</a>
+<a class="hover:text-brandRed" href="#">SIDES /</a>
+<a class="hover:text-brandRed" href="#">MERCH /</a>
+<a class="hover:text-brandRed" href="#">STORES /</a>
+</nav>
+<div class="flex gap-4 mt-8">
+<a class="text-xl border-2 border-white px-4 py-2 hover:bg-white hover:text-black transition-all" href="#">IG</a>
+<a class="text-xl border-2 border-white px-4 py-2 hover:bg-white hover:text-black transition-all" href="#">TT</a>
+<a class="text-xl border-2 border-white px-4 py-2 hover:bg-white hover:text-black transition-all" href="#">TW</a>
+</div>
+<div class="mt-10 flex gap-6 text-[10px] tracking-widest text-white/30 font-sans font-bold">
+<a href="#">LEGAL STUFF</a>
+<a href="#">COOKIES</a>
+<a href="#">PRESS KIT</a>
+<div class="border border-white/20 px-2 rounded-full">EN / ES</div>
+</div>
+</div>
+</div>
+<div class="mt-20 text-center font-sans text-[10px] tracking-widest text-white/20">
+        © 2024 BRO ON FIRE. ALL RIGHTS RESERVED. BURNING SINCE 2020.
+    </div>
+</footer>
+</body></html>

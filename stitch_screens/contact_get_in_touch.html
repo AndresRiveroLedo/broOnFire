@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact - Bro On Fire</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#E60000",
+                        "background-light": "#F2F2F2",
+                        "background-dark": "#000000",
+                    },
+                    fontFamily: {
+                        "display": ["Impact", "Haettenschweiler", "Arial Narrow Bold", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0", "lg": "0", "xl": "0", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .text-massive {
+            font-size: clamp(3rem, 10vw, 8rem);
+            line-height: 0.85;
+            letter-spacing: -0.05em;
+        }
+        .text-outline {
+            text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+        }
+        .urban-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://lh3.googleusercontent.com/aida-public/AB6AXuBPxxFsNIXaALwNI-5FkVNz9MPsMkn--h7_9ZLCLfIAloUQHaiwBQ16JPLpyIOmTfg1XDylhp9KInHg14FtvA6bOgWSi-tmff1dgN1Qc8nerp-iJlPQ_0O9FTcAZXh38DIg9p_J5MYtOBK8iKIvnCwtrOVgzmTCnRmvo7USbtXH_1wz76g9wXyRYbII-Wp6M5fetFkq6swfVn84ZPy252LUONvaQPFZ3nlI0sHaJyui7wkccpl-qmX0FMa7cUYVv7lOYdrEUvA_EyI');
+            background-size: cover;
+            background-position: center;
+        }
+        .sticker-rotate { transform: rotate(-3deg); }
+        .duct-tape {
+            background: #444;
+            height: 30px;
+            width: 100px;
+            opacity: 0.8;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body class="bg-black font-display text-white uppercase overflow-x-hidden">
+<div class="relative min-h-screen w-full flex flex-col">
+<!-- Navigation -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 md:px-12 py-6 mix-blend-difference">
+<div class="flex items-center gap-2">
+<div class="size-8 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z"></path>
+</svg>
+</div>
+<h2 class="text-white text-2xl font-black tracking-tighter">BRO ON FIRE<span class="text-primary">™</span></h2>
+</div>
+<div class="hidden md:flex items-center gap-10">
+<nav class="flex gap-8 text-sm font-bold tracking-widest">
+<a class="hover:text-primary transition-colors" href="#">HOME</a>
+<a class="hover:text-primary transition-colors" href="#">WORKOUT</a>
+<a class="hover:text-primary transition-colors" href="#">NUTRITION</a>
+<a class="text-primary" href="#">CONTACT</a>
+</nav>
+<button class="bg-primary text-white px-8 py-3 text-sm font-black tracking-widest hover:bg-white hover:text-primary transition-all border-2 border-primary">
+                    JOIN NOW
+                </button>
+</div>
+</header>
+<main class="flex-1 flex flex-col pt-32 pb-24 urban-bg relative">
+<!-- Spray Paint Effect -->
+<div class="absolute top-1/4 right-0 w-96 h-96 bg-primary/20 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="container mx-auto px-6 max-w-7xl z-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<!-- Left Side: Vicio-style Typography -->
+<div class="flex flex-col space-y-12">
+<div class="space-y-2">
+<p class="text-primary text-xl tracking-[0.2em] font-bold">// GET IN TOUCH</p>
+<h1 class="text-massive flex flex-col">
+<span class="text-outline">WANT TO</span>
+<span class="text-primary italic">CONNECT?</span>
+</h1>
+<div class="max-w-md mt-8">
+<p class="text-zinc-400 font-sans normal-case text-lg leading-relaxed">
+                                    Drop us a line for training inquiries, collab opportunities, or just to show some gains. We don't bite, unless you're a burger.
+                                </p>
+</div>
+</div>
+<div class="flex flex-col gap-8">
+<div class="flex gap-4">
+<a class="w-14 h-14 bg-white text-black flex items-center justify-center hover:bg-primary hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">social_leaderboard</span>
+</a>
+<a class="w-14 h-14 bg-white text-black flex items-center justify-center hover:bg-primary hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">video_library</span>
+</a>
+<a class="w-14 h-14 bg-white text-black flex items-center justify-center hover:bg-primary hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">chat</span>
+</a>
+</div>
+<div class="space-y-4 border-l-4 border-primary pl-6">
+<div>
+<p class="text-zinc-500 text-xs tracking-widest font-bold">EMAIL US /</p>
+<p class="text-2xl tracking-tighter">IGNITE@BROONFIRE.COM</p>
+</div>
+<div>
+<p class="text-zinc-500 text-xs tracking-widest font-bold">LOCATE US /</p>
+<p class="text-2xl tracking-tighter">IRON SANCTUARY, VENICE CA</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Side: Minimalist Impactful Form -->
+<div class="relative">
+<!-- Decorative Elements -->
+<div class="duct-tape absolute -top-4 -right-8 rotate-12 hidden md:block"></div>
+<div class="duct-tape absolute -bottom-4 -left-8 -rotate-12 hidden md:block"></div>
+<div class="bg-white p-10 md:p-16 sticker-rotate shadow-[30px_30px_0px_0px_rgba(230,0,0,1)]">
+<form class="flex flex-col gap-10">
+<div class="relative">
+<input class="w-full bg-transparent border-b-2 border-zinc-200 p-4 text-black focus:border-primary focus:ring-0 placeholder:text-zinc-400 font-bold text-xl uppercase transition-colors" placeholder="NAME" type="text"/>
+</div>
+<div class="relative">
+<input class="w-full bg-transparent border-b-2 border-zinc-200 p-4 text-black focus:border-primary focus:ring-0 placeholder:text-zinc-400 font-bold text-xl uppercase transition-colors" placeholder="EMAIL" type="email"/>
+</div>
+<div class="relative">
+<textarea class="w-full bg-transparent border-b-2 border-zinc-200 p-4 text-black focus:border-primary focus:ring-0 placeholder:text-zinc-400 font-bold text-xl uppercase transition-colors resize-none" placeholder="YOUR MESSAGE" rows="3"></textarea>
+</div>
+<button class="w-full bg-black hover:bg-primary text-white p-6 font-black text-2xl tracking-[0.1em] transition-all flex items-center justify-center gap-4 group" type="submit">
+                                    SEND MESSAGE
+                                    <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Map Section: Gritty Urban Style -->
+<section class="w-full h-80 relative bg-zinc-900 overflow-hidden grayscale contrast-150">
+<img class="w-full h-full object-cover opacity-40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdxz5IRxHGoxAjpL3Q6SFc8vbAO1Gdz7QYk9g4AZtsvxE5rBxeP_PuCDk0w00X-VeHrjHSrtJZqHtgcdZXTLbe5qOSH-vBrxOPSSpvHozylNMJZEiqG_Bt6LHKZFV7INuUu5Sn-3U5Eebw1g-lGukiaatlCr7Z8GMmKb-RqkSS-y_I2M8UgskPQDcrWG_7wxG8S764pFGBSlfvS_8JXsb6Vo_R24ePpXersxcqofveBEi4tep5rqTrnnYDaFuH0bW6i59Jxawwcfk"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-primary text-white px-10 py-4 font-black text-2xl italic -rotate-2 border-4 border-black shadow-2xl">
+                    THE HEADQUARTERS
+                </div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-black py-16 px-6 border-t border-zinc-800">
+<div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+<div class="text-white text-3xl font-black tracking-tighter">BRO ON FIRE<span class="text-primary">™</span></div>
+<nav class="flex flex-wrap justify-center gap-8 text-sm font-bold tracking-widest text-zinc-500">
+<a class="hover:text-white transition-colors" href="#">BURGERS</a>
+<a class="hover:text-white transition-colors" href="#">SIDES</a>
+<a class="hover:text-white transition-colors" href="#">MERCH</a>
+<a class="hover:text-white transition-colors" href="#">STORES</a>
+</nav>
+<div class="flex flex-col items-center md:items-end gap-2">
+<div class="flex gap-6 text-xl mb-4">
+<a class="hover:text-primary transition-colors" href="#">IG</a>
+<a class="hover:text-primary transition-colors" href="#">TT</a>
+<a class="hover:text-primary transition-colors" href="#">TW</a>
+</div>
+<p class="text-zinc-600 text-[10px] tracking-widest font-bold">© 2024 BRO ON FIRE. FUEL THE FLAME.</p>
+</div>
+</div>
+</footer>
+</div>
+</body></html>
