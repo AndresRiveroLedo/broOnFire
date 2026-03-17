@@ -20,7 +20,7 @@ const Navbar = () => {
 
   return (
     <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled || isMobileMenuOpen ? 'bg-brandBlack/70 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.5)]' : 'bg-transparent'}`}>
-      <div className="px-6 md:px-8 py-5 flex justify-between items-center text-white">
+      <div className="px-6 md:px-8 py-3 md:py-5 flex justify-between items-center text-white">
         
         {/* Logo */}
         <div className="text-2xl md:text-3xl font-bold tracking-tighter cursor-pointer flex-shrink-0">
