@@ -56,9 +56,8 @@ const Hero = () => {
               <a className="bg-brandBlack text-white text-xs px-3 py-1 mt-2 rounded" href="#">JOIN NOW</a>
             </div>
 
-            {/* Collection 01 - Relocated to Left under circle */}
+            {/* Collection 01 - Repositioned back in Group (Clean, without tape) */}
             <div className="bg-brandRed text-white inline-block px-4 py-2 text-2xl font-impact sticker-rotate-left border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] z-20 relative">
-              <div className="duct-tape absolute -top-2 -right-2 rotate-45 w-10 h-2 bg-gray-400 opacity-90"></div>
               COLLECTION 01
             </div>
 
@@ -86,25 +85,6 @@ const Hero = () => {
 
           
           {/* Old Handle and Image Container Removed */}
-
-          
-          {/* Menu Section Removed */}
-          <div className="md:hidden">
-            <div className="relative mt-24 ml-10 max-w-2xl z-20">
-              <p className="text-xs font-sans font-bold mb-4 tracking-widest text-white bg-brandRed inline-block px-2 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] uppercase">HERE'S OUR MENU /</p>
-              <div className="grid grid-cols-2 gap-x-12 gap-y-1 text-2xl leading-none text-white font-impact">
-                <a className="hover:text-brandRed transition-colors text-outline-small inline-block w-fit" href="#">THE FLAMING TRIPLE /</a>
-                <a className="hover:text-brandRed transition-colors text-outline-small inline-block w-fit" href="#">VOLCANO FRIES /</a>
-                <a className="hover:text-brandRed transition-colors text-outline-small inline-block w-fit" href="#">BRO'S CHEESEBURGER /</a>
-                <a className="hover:text-brandRed transition-colors text-outline-small inline-block w-fit" href="#">LAVA WINGS /</a>
-                <a className="hover:text-brandRed transition-colors text-outline-small inline-block w-fit" href="#">THE INFERNO VEGAN /</a>
-                <a className="hover:text-brandRed transition-colors text-outline-small inline-block w-fit" href="#">SMOKY BBQ RIBS /</a>
-                <a className="hover:text-brandRed transition-colors text-outline-small inline-block w-fit" href="#">SPICY ONION RINGS /</a>
-                <a className="hover:text-brandRed transition-colors text-outline-small inline-block w-fit" href="#">FIREBALL SHAKE /</a>
-              </div>
-            </div>
-          </div>
-          
 
         </div>
 
