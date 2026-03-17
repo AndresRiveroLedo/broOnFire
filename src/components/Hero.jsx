@@ -4,27 +4,13 @@ import { motion } from 'framer-motion';
 const Hero = () => {
   return (
     <main className="collage-container pt-0 md:pt-16 px-4 overflow-hidden relative">
-      {/* Background Video Layer */}
-      <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none overflow-hidden">
-        {/* Extremely strong base gradient: black on left, solid bright red on right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-[#E60000] z-0"></div>
-        
-        {/* Video as a subtle texture overlay */}
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          className="absolute inset-0 w-full h-full object-cover grayscale opacity-30 mix-blend-overlay z-10"
-        >
-          <source src="/bg-fire.mp4" type="video/mp4" />
-        </video>
-        
-        {/* Darken the left side further so text reads clearly */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent z-20"></div>
+      {/* Background Layer */}
+      <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none overflow-hidden bg-black">
+        {/* Strong base gradient: black on left, solid bright red on right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-[#E60000] z-0 opacity-80"></div>
         
         {/* Extra intense highlight on the right edge */}
-        <div className="absolute right-0 top-0 bottom-0 w-[40%] bg-gradient-to-l from-[#E60000]/80 via-[#E60000]/20 to-transparent z-30 mix-blend-screen"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-[40%] bg-gradient-to-l from-[#E60000]/80 via-[#E60000]/20 to-transparent z-10 mix-blend-screen"></div>
       </div>
 
       <div className="relative z-10 flex flex-col md:block w-full h-full pb-32 md:pb-0 pt-20 md:pt-0">
@@ -103,111 +89,90 @@ const Hero = () => {
         </div>
 
         {/* =======================
-            SPECTACULAR MOBILE LAYOUT 
+            MOBILE LAYOUT
             ======================= */}
-        <div className="md:hidden flex flex-col items-center w-full min-h-[120vh] relative pt-0">
-          
-          {/* Glitch Entrance Title */}
-          <motion.div 
-            initial={{ scale: 0.8, opacity: 0, y: -50 }}
+        <div className="md:hidden flex flex-col w-full min-h-[100vh] relative pt-0">
+
+          {/* Title - smaller, aligned right */}
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0, y: -30 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 100, damping: 10 }}
-            className="flex flex-col items-center select-none text-white text-outline relative z-30 w-full mb-[-8vh]" 
-            style={{ fontSize: '22vw', lineHeight: '0.8', paddingRight: '0.2em' }}
+            className="flex flex-col items-end select-none text-white text-outline relative z-30 w-full mb-[-5vh] pr-3"
+            style={{ fontSize: '13vw', lineHeight: '0.88' }}
           >
-            <span className="ml-[-10vw]">BRO ON</span>
-            <span className="text-brandRed bg-black/40 px-2 mt-2 ml-[10vw]">FIRE</span>
+            <span>BRO ON</span>
+            <span className="text-brandRed bg-black/40 px-2 mt-1">FIRE</span>
           </motion.div>
 
-          {/* Epic Scaled Burger with Glow */}
-          <div className="relative w-full z-20 mt-0 flex justify-center items-center">
-            
-            <motion.div 
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1.25, opacity: 1 }}
-              transition={{ delay: 0.2, type: "spring", stiffness: 120, damping: 15 }}
-              className="relative w-[110%] mx-auto z-10"
+          {/* Burger video + stickers */}
+          <div className="relative w-full z-20 flex justify-center items-center">
+
+            {/* Popular Fire - top right corner, over the burger */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.4, type: "spring" }}
+              className="absolute top-2 right-2 z-40"
             >
-              {/* Red Inner Glow specific for mobile */}
+              <p className="text-[0.5rem] font-bold tracking-widest text-brandRed bg-black px-1.5 py-0.5 border border-brandRed leading-none">POPULAR FIRE /</p>
+            </motion.div>
+
+            {/* Video */}
+            <motion.div
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1.1, opacity: 1 }}
+              transition={{ delay: 0.2, type: "spring", stiffness: 120, damping: 15 }}
+              className="relative w-full mx-auto z-10"
+            >
               <div className="absolute inset-0 rounded-full blur-[60px] bg-brandRed/40 scale-75 z-0"></div>
-              <video 
-                autoPlay 
-                loop 
-                muted 
-                playsInline 
-                className="w-full h-auto object-contain relative z-10 drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)]" 
-                src="/assets/carbonara-video.mp4" 
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto object-contain relative z-10 drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
+                src="/assets/carbonara-video.mp4"
               />
             </motion.div>
 
-            {/* Chaotic Overlapping Stickers - Positioned relative to screen, not scaled burger */}
-            
-            {/* Flame Club - Top Right overlapping burger */}
-            <motion.div 
-              initial={{ rotate: -50, scale: 0, opacity: 0 }}
-              animate={{ rotate: 12, scale: 1, opacity: 1 }}
+            {/* Flame Club - top left */}
+            <motion.div
+              initial={{ rotate: 50, scale: 0, opacity: 0 }}
+              animate={{ rotate: -12, scale: 1, opacity: 1 }}
               transition={{ delay: 0.6, type: "spring" }}
-              className="absolute top-[10%] right-2 z-30"
+              className="absolute top-[12%] left-2 z-30"
             >
-              <div className="bg-brandRed text-white p-2 rounded-full border-4 border-black flex flex-col items-center justify-center w-24 h-24 text-center shadow-[0_10px_20px_rgba(0,0,0,0.8)]">
-                <span className="text-sm font-bold leading-none">THE FLAME<br/>CLUB</span>
-                <span className="text-[0.45rem] mt-1 leading-tight font-black">JOIN THE BROHOOD<br/>AND GET BURNT</span>
-                <a className="bg-brandBlack text-white text-[0.55rem] px-2 py-[2px] mt-1 rounded" href="#">JOIN NOW</a>
+              <div className="bg-brandRed text-white rounded-full border-2 border-black flex flex-col items-center justify-center shadow-[0_6px_16px_rgba(0,0,0,0.8)]"
+                style={{ width: '10vw', height: '10vw', minWidth: '36px', minHeight: '36px' }}>
+                <span className="text-[0.4rem] font-bold leading-none text-center">THE<br/>FLAME<br/>CLUB</span>
               </div>
             </motion.div>
 
-            {/* Yellow Certified Sticker - Bottom Left overlapping burger */}
-            <motion.div 
-              initial={{ rotate: 90, x: -50, opacity: 0 }}
-              animate={{ rotate: -15, x: 0, opacity: 1 }}
+            {/* Certified Hot AF - bottom right */}
+            <motion.div
+              initial={{ rotate: -90, x: 50, opacity: 0 }}
+              animate={{ rotate: 15, x: 0, opacity: 1 }}
               transition={{ delay: 0.8, type: "spring" }}
-              className="absolute bottom-[20%] left-2 z-30 w-28 h-28 bg-brandYellow rounded-lg flex items-center justify-center border-4 border-black shadow-[0_15px_30px_rgba(0,0,0,0.6)]"
+              className="absolute bottom-[18%] right-2 z-30 bg-brandYellow rounded-lg flex items-center justify-center border-2 border-black shadow-[0_8px_20px_rgba(0,0,0,0.6)]"
+              style={{ width: '10vw', height: '10vw', minWidth: '36px', minHeight: '36px' }}
             >
-              <div className="duct-tape absolute -top-3 -right-6 rotate-45 w-16 bg-gray-300"></div>
-              <span className="text-black text-center text-sm font-black leading-tight">CERTIFIED<br/>HOT AF</span>
+              <span className="text-black text-center font-black leading-tight" style={{ fontSize: '0.38rem' }}>CERT<br/>HOT AF</span>
             </motion.div>
           </div>
-          
-          {/* Collection Banner - Pinned over the burger bottom edge */}
-          <motion.div 
-            initial={{ y: 50, opacity: 0 }}
+
+          {/* Collection 01 - right aligned, compact */}
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 1 }}
-            className="w-full px-4 flex justify-center z-40 mt-[-10vh]"
+            className="w-full flex justify-end z-40 mt-[-4vh] pr-3"
           >
-            <div className="bg-brandBlack text-brandRed w-[110%] ml-[-5%] py-3 text-5xl text-center sticker-rotate-right border-y-4 border-brandRed shadow-2xl">
+            <div className="bg-brandBlack text-brandRed px-3 py-1 text-sm sticker-rotate-right border border-brandRed shadow-xl inline-block">
               COLLECTION 01
             </div>
           </motion.div>
 
-          {/* Action Area Below */}
-          <div className="w-full px-6 mt-16 z-30 flex flex-col items-center gap-12">
-            
-            {/* Minimal Menu Preview */}
-            <div className="w-full text-center">
-              <p className="text-xs font-sans font-bold mb-6 tracking-widest text-brandRed bg-black inline-block px-4 py-1 border border-brandRed">POPULAR FIRE /</p>
-              <div className="flex flex-col gap-3 text-2xl leading-none text-white font-impact items-center">
-                <a className="hover:text-brandRed transition-colors" href="#">THE FLAMING TRIPLE</a>
-                <a className="hover:text-brandRed transition-colors" href="#">VOLCANO FRIES</a>
-                <a className="hover:text-brandRed transition-colors" href="#">BRO'S CHEESEBURGER</a>
-              </div>
-              <button className="mt-8 bg-brandRed text-white px-8 py-3 rounded text-xl uppercase tracking-widest sticker-rotate-left border-2 border-black font-bold">
-                SEE FULL MENU
-              </button>
-            </div>
-            
-            {/* Huge CTA */}
-            <div className="bg-brandRed p-6 w-full max-w-sm sticker-rotate-left scale-[1.05] shadow-[0_20px_50px_rgba(230,0,0,0.3)] border-4 border-black mt-8">
-              <p className="text-white text-5xl text-center leading-none text-outline-black">BIG ORDERS?</p>
-              <p className="text-black text-center text-base leading-none mt-2 font-black">FEED THE WHOLE SQUAD</p>
-              <div className="bg-brandBlack text-white text-xl text-center p-3 mt-4 font-bold border-2 border-white">SMASH HERE</div>
-            </div>
-
-            <div className="flex gap-4 justify-center mt-4">
-              <img alt="Merch" className="h-12 border-2 border-black bg-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8UCn3gy5H4VNBcuGDZ1aT_kiZc-Jt7Jr4Rmmkia--66tEMGnAcB1-EuyAkQKbqb5-GhxfYADihuSYIONH7BETaexH_Pq-lh6TH5ur1PpiX3nHzoXDGRbwexB8wbVM2gCHvgm94aDE5vVQvxK0ldbdCV6NtUBHzsu7Rt7vPPAeg0x-XOSWevxb0_V7krtN2rZFYq0uB853vJ3qEbupQYBocdD_yuA1KUHqlqwPDIzpokwrFc7HNabC9coyEU-YWzaOYnabG2wPI5o" />
-              <img alt="Limited" className="h-12 border-2 border-black sticker-rotate-right bg-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoSsbVZ9CEJyCw9cHkP2Ikj1aaTXycPQknYbXaQgyJ3LmnOqqqhuM0P8HuNrL7WfVOb8i_sW045Q62bHSWOlPYWW5qWV0SjyxYR3wxvN0oZ53uSbRHC3EX4GuNoBcf4RrHym6AQ3xDiEBEr5g4Zz3XbSCB95kVPHoTiPnsmwBd6_ircJVtv0tJSfWL__Lz_-h2EtiMvPKdanNfF16uWnZjaBqDmtu5qRcqtiJhloPaFOCeuBtYBWfFDwhKX3rjmfzEGRWMhSY_1-0" />
-            </div>
-          </div>
         </div>
 
       </div>

@@ -37,7 +37,7 @@ const Navbar = () => {
         {/* Right Action & Mobile Toggle */}
         <div className="flex items-center gap-4 flex-shrink-0">
           <a 
-            className="hidden sm:flex order-btn-glow bg-brandRed text-white px-6 py-2 md:px-8 md:py-3 rounded-md font-bold tracking-wider hover:bg-white hover:text-brandRed transition-all duration-300 text-sm md:text-base" 
+            className="hidden md:flex order-btn-glow bg-brandRed text-white px-6 py-2 md:px-8 md:py-3 rounded-md font-bold tracking-wider hover:bg-white hover:text-brandRed transition-all duration-300 text-sm md:text-base" 
             href="#"
           >
             ORDER NOW
