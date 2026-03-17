@@ -94,28 +94,28 @@ const Hero = () => {
         <div className="md:hidden flex flex-col w-full min-h-[100vh] relative pt-0">
 
           {/* Title - smaller, aligned right */}
-          <motion.div
+          <motion.div 
             initial={{ scale: 0.8, opacity: 0, y: -30 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 100, damping: 10 }}
-            className="flex flex-col items-end select-none text-white text-outline relative z-30 w-full mb-[-5vh] pr-3"
-            style={{ fontSize: '13vw', lineHeight: '0.88' }}
+            className="flex flex-col items-center select-none text-white text-outline relative z-30 w-full mb-[-4vh]"
+            style={{ fontSize: '18vw', lineHeight: '0.8', letterSpacing: '-0.05em' }}
           >
-            <span>BRO ON</span>
-            <span className="text-brandRed bg-black/40 px-2 mt-1">FIRE</span>
+            <span className="ml-[-5vw]">BRO ON</span>
+            <span className="text-brandRed bg-black/60 px-4 mt-1 border-y-2 border-brandRed ml-[5vw]">FIRE</span>
           </motion.div>
 
           {/* Burger video + stickers */}
           <div className="relative w-full z-20 flex justify-center items-center">
 
-            {/* Popular Fire - top right corner, over the burger */}
+            {/* Popular Fire - Repositioned for visibility */}
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.4, type: "spring" }}
-              className="absolute top-2 right-2 z-40"
+              className="absolute top-0 right-4 z-40"
             >
-              <p className="text-[0.5rem] font-bold tracking-widest text-brandRed bg-black px-1.5 py-0.5 border border-brandRed leading-none">POPULAR FIRE /</p>
+              <p className="text-[0.6rem] font-black tracking-widest text-white bg-brandRed px-2 py-1 border-2 border-black leading-none shadow-lg">POPULAR FIRE /</p>
             </motion.div>
 
             {/* Video */}
@@ -137,15 +137,15 @@ const Hero = () => {
             </motion.div>
 
             {/* Flame Club - top left */}
-            <motion.div
+            <motion.div 
               initial={{ rotate: 50, scale: 0, opacity: 0 }}
               animate={{ rotate: -12, scale: 1, opacity: 1 }}
               transition={{ delay: 0.6, type: "spring" }}
-              className="absolute top-[12%] left-2 z-30"
+              className="absolute top-[8%] left-4 z-30"
             >
-              <div className="bg-brandRed text-white rounded-full border-2 border-black flex flex-col items-center justify-center shadow-[0_6px_16px_rgba(0,0,0,0.8)]"
-                style={{ width: '10vw', height: '10vw', minWidth: '36px', minHeight: '36px' }}>
-                <span className="text-[0.4rem] font-bold leading-none text-center">THE<br/>FLAME<br/>CLUB</span>
+              <div className="bg-brandRed text-white rounded-full border-2 border-black flex flex-col items-center justify-center shadow-[0_6px_16px_rgba(0,0,0,0.8)]" 
+                style={{ width: '12vw', height: '12vw', minWidth: '40px', minHeight: '40px' }}>
+                <span className="text-[0.45rem] font-black leading-none text-center">THE<br/>FLAME<br/>CLUB</span>
               </div>
             </motion.div>
 
@@ -161,15 +161,19 @@ const Hero = () => {
             </motion.div>
           </div>
 
-          {/* Collection 01 - right aligned, compact */}
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
+          {/* Collection 01 & Social - Left aligned, vibrant red */}
+          <motion.div 
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 1 }}
-            className="w-full flex justify-end z-40 mt-[-4vh] pr-3"
+            className="w-full flex justify-start z-40 mt-[-4vh] pl-6 relative"
           >
-            <div className="bg-brandBlack text-brandRed px-3 py-1 text-sm sticker-rotate-right border border-brandRed shadow-xl inline-block">
-              COLLECTION 01
+            <div className="flex flex-col gap-2">
+              <div className="bg-brandRed text-white px-6 py-2 text-lg font-impact sticker-rotate-left border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,0.5)] inline-block relative">
+                <div className="duct-tape absolute -top-3 -right-4 rotate-12 w-12 bg-gray-400"></div>
+                COLLECTION 01
+              </div>
+              <p className="text-white font-sans text-[0.7rem] font-black tracking-widest pl-2 bg-black/60 w-fit px-2 py-0.5">@BROONFIRE_</p>
             </div>
           </motion.div>
 
