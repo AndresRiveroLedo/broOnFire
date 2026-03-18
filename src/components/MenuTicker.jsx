@@ -3,12 +3,8 @@ import React from 'react';
 const MenuTicker = () => {
   const items = [
     "CARBONARA BURGER",
-    "BRO'S CHEESE BURGER",
-    "CARBONARA SMASH",
-    "BROONFIRE",
-    "SMASH HITTER",
-    "THE PIT BOSS",
-    "DOUBLE TROUBLE"
+    "BACON BBQ",
+    "CLASSIC BURGER"
   ];
 
   // Repeat items to ensure seamless scroll
