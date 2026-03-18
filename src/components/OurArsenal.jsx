@@ -12,8 +12,8 @@ const arsenalItems = [
   },
   {
     id: 2,
-    name: "Bacon BBQ",
-    description: "DOUBLE BEEF PATTY, CHEDDAR, CRISPY BACON, ONION RINGS, SMOKY BBQ SAUCE.",
+    name: "Bacon Burger",
+    description: "BURGER BUN, BEEF PATTY, CRISPY BACON, CHEDDAR CHEESE, FRESH TOMATO SLICES, ARUGULA, BALSAMIC REDUCTION DRIZZLE.",
     price: "13.90 €",
     video: "/assets/bacon burger.MOV",
     popular: true

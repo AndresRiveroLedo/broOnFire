@@ -3,7 +3,7 @@ import React from 'react';
 const MenuTicker = () => {
   const items = [
     "CARBONARA BURGER",
-    "BACON BBQ",
+    "BACON BURGER",
     "CLASSIC BURGER"
   ];
 
