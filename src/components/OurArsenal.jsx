@@ -102,7 +102,7 @@ const OurArsenal = () => {
                     />
                   )}
                   {item.popular && (
-                    <span className="absolute top-4 right-4 bg-gradient-to-r from-brandRed to-brandYellow text-black text-[0.6rem] font-bold px-2 py-0.5 rounded-full shadow-md">
+                    <span className={`absolute ${item.id === 2 ? 'top-10' : 'top-4'} right-4 bg-gradient-to-r from-brandRed to-brandYellow text-black text-[0.6rem] font-bold px-2 py-0.5 rounded-full shadow-md`}>
                       Top Seller
                     </span>
                   )}
