@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import MenuTicker from './components/MenuTicker';
 import Menu from './components/Menu';
 import About from './components/About';
 import OurArsenal from './components/OurArsenal';
@@ -12,6 +13,7 @@ function App() {
     <div className="app-container bg-black min-h-screen text-white font-impact overflow-x-hidden">
       <Navbar />
       <Hero />
+      <MenuTicker />
       <OurArsenal />
       <About />
       <Menu />

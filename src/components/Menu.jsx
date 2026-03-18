@@ -25,15 +25,22 @@ const Menu = () => {
           {/* Item 1 */}
           <div className="relative group">
             <div className="relative aspect-square overflow-hidden mb-6 paper-tear grayscale hover:grayscale-0 transition-all duration-700">
-              <img alt="Burger" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFIKhiDTd6RINnSRrq_xHY8ZGaUQ3bWDi4qzD_tli7E6dEkR54VBcuqGCbgoahn0o3-jAX15K5aZKF8lh2QVEFCZep6n3QRgD6SNWUmAcMogmsXkJTOInwq4jUnSAltKZCmbQhVuEj9Yb0-K9GhtW65a2m5mSw-BuGG6DlA7vbTyMekDgvAiPypTC2Cikie1UvhKQg_KmdDMw02yvy6SSK7FYPEob9NrVugf9wmJhykub7LFhfIxmfrzHSQssFDwIOTAuqc7QXuHk" />
+              <video 
+                autoPlay 
+                loop 
+                muted 
+                playsInline 
+                className="w-full h-full object-cover"
+                src="/assets/carbonara_woman.MOV"
+              />
               <div className="absolute top-4 left-4 bg-brandRed text-white px-3 py-1 text-sm sticker-rotate-left font-bold">HOT AF</div>
               <div className="duct-tape absolute -top-2 right-10 rotate-12"></div>
             </div>
             <div className="flex justify-between items-end mb-4">
-              <h3 className="text-4xl leading-none">THE FLAMING<br/>TRIPLE</h3>
-              <span className="text-2xl font-bold text-brandRed">$16.99</span>
+              <h3 className="text-4xl leading-none uppercase">CARBONARA<br/>BURGER</h3>
+              <span className="text-2xl font-bold text-brandRed">$15.90</span>
             </div>
-            <p className="font-sans lowercase text-sm text-white/60 mb-6 leading-tight max-w-xs">triple beef, ghost pepper cheese, spicy aioli, jalapeño crunch, scorched onions.</p>
+            <p className="font-sans lowercase text-sm text-white/60 mb-6 leading-tight max-w-xs">burger de vaca vieja con queso cheddar, guanciale italiano, nuestra salsa carbonara, en un pan de brioche.</p>
             <button className="w-full border-2 border-white py-4 text-xl hover:bg-white hover:text-black transition-all font-bold">ADD TO BAG /</button>
           </div>
 

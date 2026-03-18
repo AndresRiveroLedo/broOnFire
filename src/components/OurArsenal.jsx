@@ -4,35 +4,27 @@ import { motion } from 'framer-motion';
 const arsenalItems = [
   {
     id: 1,
-    name: "The OG Smash",
-    description: "Double beef patty, american cheese, signature bro sauce, pickles, brioche bun.",
-    price: "11.90 €",
-    image: "https://images.unsplash.com/photo-1553979459-d2229ba7433b?auto=format&fit=crop&q=80&w=800",
+    name: "Carbonara Burger",
+    description: "DRY-AGED BEEF BURGER WITH CHEDDAR CHEESE, ITALIAN GUANCIALE, AND OUR SIGNATURE CARBONARA SAUCE ON A BRIOCHE BUN.",
+    price: "15.90 €",
+    video: "/assets/carbonara_woman.MOV",
     popular: true
   },
   {
     id: 2,
-    name: "Truffle Mushroom",
-    description: "Double beef patty, swill cheese, roasted mushrooms, truffle mayo, crispy onions.",
-    price: "13.50 €",
-    image: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&q=80&w=800",
-    popular: false
+    name: "Bacon BBQ",
+    description: "DOUBLE BEEF PATTY, CHEDDAR, CRISPY BACON, ONION RINGS, SMOKY BBQ SAUCE.",
+    price: "13.90 €",
+    video: "/assets/bacon burger.MOV",
+    popular: true
   },
   {
     id: 3,
-    name: "Spicy Inferno",
-    description: "Double beef patty, pepper jack, jalapeños, spicy mayo, hot honey glaze.",
-    price: "12.90 €",
-    image: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&q=80&w=800",
+    name: "Classic Burger",
+    description: "AMERICAN CHEESE, TOMATO, LETTUCE, ONIONS, KETCHUP & MUSTARD",
+    price: "13.50 €",
+    video: "/assets/classic bro burger.MOV",
     popular: false
-  },
-  {
-    id: 4,
-    name: "Bacon BBQ",
-    description: "Double beef patty, cheddar, crispy bacon, onion rings, smoky BBQ sauce.",
-    price: "13.90 €",
-    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&q=80&w=800",
-    popular: true
   }
 ];
 
@@ -79,7 +71,7 @@ const OurArsenal = () => {
         </div>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -93,11 +85,22 @@ const OurArsenal = () => {
             >
               <div className="relative bg-[#111] border border-transparent rounded-[15px] overflow-hidden flex flex-col h-full group-hover:border-brandRed group-hover:shadow-[0_0_20px_rgba(230,0,0,0.6)] transition-all duration-300">
                 <div className="relative h-64 overflow-hidden shrink-0">
-                  <img 
-                    src={item.image} 
-                    alt={item.name} 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-                  />
+                  {item.video ? (
+                    <video 
+                      autoPlay 
+                      loop 
+                      muted 
+                      playsInline 
+                      className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" 
+                      src={item.video}
+                    />
+                  ) : (
+                    <img 
+                      src={item.image} 
+                      alt={item.name} 
+                      className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" 
+                    />
+                  )}
                   {item.popular && (
                     <span className="absolute top-4 right-4 bg-gradient-to-r from-brandRed to-brandYellow text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg">
                       Top Seller
