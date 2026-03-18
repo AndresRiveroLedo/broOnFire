@@ -91,7 +91,7 @@ const Hero = () => {
         {/* =======================
             MOBILE LAYOUT
             ======================= */}
-        <div className="md:hidden flex w-full relative items-center justify-center mb-4">
+        <div className="md:hidden flex w-full relative items-center justify-center">
           
           {/* Container scaled exactly to 16:9 aspect ratio bounding box of the background video */}
           <div className="relative w-[100vw] h-[56.25vw] max-h-[100vh]">

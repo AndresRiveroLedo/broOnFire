@@ -49,7 +49,7 @@ const OurArsenal = () => {
   return (
     <section id="arsenal" className="pt-4 pb-24 px-6 md:pt-8 md:px-12 bg-black font-sans relative z-10">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-16 text-center">
+        <div className="mb-6 md:mb-16 text-center">
           <motion.h2 
             className="text-5xl md:text-7xl font-impact uppercase tracking-widest text-white"
             initial={{ opacity: 0, x: -30 }}
@@ -84,25 +84,25 @@ const OurArsenal = () => {
               className="relative rounded-2xl group hover:-translate-y-2 transition-all duration-300 hover:shadow-[0_0_40px_-10px_rgba(230,0,0,0.5)] h-full"
             >
               <div className="relative bg-[#111] border border-transparent rounded-[15px] overflow-hidden flex flex-col h-full group-hover:border-brandRed group-hover:shadow-[0_0_20px_rgba(230,0,0,0.6)] transition-all duration-300">
-                <div className="relative h-64 overflow-hidden shrink-0">
+                <div className="relative w-full overflow-hidden shrink-0 bg-black flex justify-center items-center group-hover:scale-105 transition-transform duration-500">
                   {item.video ? (
                     <video 
                       autoPlay 
                       loop 
                       muted 
                       playsInline 
-                      className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" 
+                      className="w-full h-auto block" 
                       src={item.video}
                     />
                   ) : (
                     <img 
                       src={item.image} 
                       alt={item.name} 
-                      className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" 
+                      className="w-full h-auto block" 
                     />
                   )}
                   {item.popular && (
-                    <span className="absolute top-4 right-4 bg-gradient-to-r from-brandRed to-brandYellow text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                    <span className="absolute top-4 right-4 bg-gradient-to-r from-brandRed to-brandYellow text-black text-[0.6rem] font-bold px-2 py-0.5 rounded-full shadow-md">
                       Top Seller
                     </span>
                   )}
