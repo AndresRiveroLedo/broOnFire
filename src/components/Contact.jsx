@@ -3,7 +3,7 @@ import React from 'react';
 const Contact = () => {
   return (
     <>
-      <main className="flex-1 flex flex-col pt-32 pb-24 bg-black relative">
+      <main className="flex-1 flex flex-col pt-32 pb-24 relative" style={{ background: 'rgba(0,0,0,0.80)' }}>
         {/* Spray Paint Effect */}
         <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/20 blur-[120px] rounded-full pointer-events-none"></div>
         <div className="container mx-auto px-6 max-w-7xl z-10">

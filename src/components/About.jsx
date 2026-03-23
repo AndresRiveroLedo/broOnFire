@@ -1,114 +1,173 @@
-import React from 'react';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-const About = () => {
+gsap.registerPlugin(ScrollTrigger);
+
+export default function About() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    /* ── entry animations ────────────────────────── */
+    const animDefs = {
+      'fade-up':     { from: { y: 60, opacity: 0 },              to: { y: 0, opacity: 1 } },
+      'slide-left':  { from: { x: -80, opacity: 0 },             to: { x: 0, opacity: 1 } },
+      'slide-right': { from: { x: 80, opacity: 0 },              to: { x: 0, opacity: 1 } },
+      'scale-up':    { from: { scale: 0.85, opacity: 0 },        to: { scale: 1, opacity: 1 } },
+      'rotate-in':   { from: { y: 40, rotation: 3, opacity: 0 }, to: { y: 0, rotation: 0, opacity: 1 } },
+    };
+
+    section.querySelectorAll('[data-anim]').forEach((el) => {
+      const def = animDefs[el.dataset.anim] || animDefs['fade-up'];
+      const kids = el.querySelectorAll('[data-s]');
+      if (kids.length) {
+        gsap.set(kids, def.from);
+        ScrollTrigger.create({
+          trigger: el, start: 'top 88%',
+          onEnter: () => gsap.to(kids, { ...def.to, duration: 0.85, ease: 'power3.out', stagger: 0.14 }),
+        });
+      } else {
+        gsap.set(el, def.from);
+        ScrollTrigger.create({
+          trigger: el, start: 'top 88%',
+          onEnter: () => gsap.to(el, { ...def.to, duration: 0.9, ease: 'power3.out' }),
+        });
+      }
+    });
+
+    /* marquee: animación CSS infinita, sin parallax GSAP */
+
+    /* ── counters ────────────────────────────────── */
+    section.querySelectorAll('[data-count]').forEach((el) => {
+      const target = parseFloat(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      ScrollTrigger.create({
+        trigger: el, start: 'top 88%',
+        onEnter: () =>
+          gsap.to({ val: 0 }, {
+            val: target, duration: 2.2, ease: 'power2.out',
+            onUpdate: function () {
+              el.textContent = Math.round(this.targets()[0].val) + suffix;
+            },
+          }),
+      });
+    });
+
+    return () => {
+      ScrollTrigger.getAll()
+        .filter((t) => t.trigger && section.contains(t.trigger))
+        .forEach((t) => t.kill());
+    };
+  }, []);
+
   return (
-    <div id="about" className="relative bg-background-dark text-white uppercase overflow-hidden">
-      {/* Spray Paint Decor */}
-      <div className="absolute top-20 right-[-10%] w-[500px] h-[500px] spray-paint pointer-events-none z-0"></div>
-      <div className="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] spray-paint pointer-events-none z-0"></div>
+    <section
+      id="about"
+      ref={sectionRef}
+      className="relative text-white uppercase"
+    >
+      {/* spray paint decor */}
+      <div className="absolute top-20 right-[-10%] w-[500px] h-[500px] spray-paint pointer-events-none z-0" />
+      <div className="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] spray-paint pointer-events-none z-0" />
 
-      {/* Gallery Hero Section */}
-      <section className="relative px-6 pt-24 pb-12 lg:px-12 z-10">
-        <div className="max-w-full">
-          <h1 className="text-massive flex flex-col items-start leading-none mb-12">
-            <span className="text-white text-outline">THE VIBE</span>
-            <span className="text-primary italic">CHECK</span>
-          </h1>
-          <div className="flex flex-col md:flex-row gap-8 items-start justify-between">
-            <p className="font-sans text-lg md:text-xl text-white max-w-2xl font-medium normal-case leading-relaxed">
-              A raw, unfiltered look at the concrete jungle, the neon nights, and the burgers that fuel our soul. This is urban culture, flame-grilled.
+      {/* marquee top (Marquee 1) */}
+      <div className="overflow-hidden py-3" style={{ background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(4px)' }}>
+        <div className="about-marquee-track">
+          {['BURNT PERFECTION', 'STREET SOUL', 'NIGHT LIFE', 'LIVING LOUD', 'SQUAD GOALS',
+            'BURNT PERFECTION', 'STREET SOUL', 'NIGHT LIFE', 'LIVING LOUD', 'SQUAD GOALS'].map((w, i) => (
+            <span key={i}>{w}&nbsp;·&nbsp;</span>
+          ))}
+        </div>
+      </div>
+
+
+
+      {/* ── Consolidated Vibe Check & Collage ── */}
+      <section className="relative px-6 pt-16 pb-32 lg:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+          
+          {/* LEFT COLUMN */}
+          <div className="md:col-span-7 lg:col-span-8 flex flex-col justify-start items-start" data-anim="fade-up">
+            <h1 className="text-massive flex flex-col items-start leading-none mb-12">
+              <span className="text-white text-outline" data-s>THE VIBE</span>
+              <span className="text-primary italic" data-s>CHECK</span>
+            </h1>
+            <p className="font-sans text-lg md:text-xl text-white max-w-2xl font-medium normal-case leading-relaxed mb-16" data-s>
+              A raw, unfiltered look at the concrete jungle, the neon nights,
+              and the burgers that fuel our soul. This is urban culture, flame-grilled.
             </p>
-            <div className="sticker-rotate-right bg-brandYellow text-black px-6 py-4 font-black text-2xl border-4 border-black shadow-2xl">
+
+            {/* living loud neon block */}
+            <div className="flex items-center justify-start p-4 md:p-6 bg-black/40 rounded-3xl border border-white/5 w-fit" data-anim="fade-up">
+              <h2 className="text-4xl md:text-6xl font-black text-white italic tracking-tighter text-left leading-[0.8]">
+                <span className="block drop-shadow-[0_0_10px_rgba(255,255,255,0.7)]">LIVING</span>
+                <span className="block text-primary drop-shadow-[0_0_15px_rgba(230,0,0,0.9)]">LOUD</span>
+              </h2>
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN (The Requested Stack) */}
+          <div className="md:col-span-5 lg:col-span-4 flex flex-col justify-start gap-12 pt-8 md:pt-0 w-full">
+            
+            {/* 1. Polaroid Fries (Left) */}
+            <div className="self-start ml-2 md:ml-0 w-32 md:w-48 bg-white p-1.5 md:p-2 pb-6 md:pb-8 shadow-xl -rotate-3 border border-gray-200" data-anim="slide-right">
+              <div className="w-full aspect-square overflow-hidden bg-neutral-900 mb-2">
+                <img
+                  className="w-full h-full object-cover transition-all duration-500"
+                  alt="Loaded fries polaroid"
+                  src="/assets/loaded_fries_blurred.png"
+                />
+              </div>
+              <p className="font-handwriting text-black text-center text-xs md:text-base">LOADED FRIES</p>
+            </div>
+
+            {/* 2. Yellow Sticker (Right) */}
+            <div className="self-end mr-2 md:mr-0 sticker-rotate-right bg-brandYellow text-black px-3 py-2 md:px-6 md:py-4 font-black text-sm md:text-2xl border-[3px] md:border-4 border-black shadow-2xl" data-anim="slide-left">
               STAY HUNGRY / STAY WILD
             </div>
+
+            {/* 3. Girl Model (Left) */}
+            <div className="self-start ml-2 md:ml-0 w-32 md:w-48 aspect-square relative flex items-center justify-center" data-anim="slide-right">
+              <img
+                className="w-full h-full object-contain mix-blend-screen drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+                alt="Model eating burger"
+                src="/assets/vicio-model-transparent.png"
+              />
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* Dynamic Collage Gallery */}
-      <main className="relative px-6 lg:px-12 pb-32 z-10">
-        <div className="grid grid-cols-12 gap-6 auto-rows-auto">
-          
-          {/* Large Feature Image */}
-          <div className="col-span-12 md:col-span-7 relative group">
-            <div className="absolute -top-6 left-1/4 z-20 w-40 h-10 duct-tape -rotate-12 opacity-80"></div>
-            <div className="w-full aspect-square md:aspect-video bg-neutral-900 border-8 border-white shadow-[20px_20px_0px_0px_rgba(230,0,0,1)] overflow-hidden transition-transform group-hover:scale-[1.01] duration-500">
-              <img className="w-full h-full object-cover" alt="Juicy gourmet burger" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTvAOMqVsQX4znt2pshQJMRthAGBRYFsxD0nn2lQehNe4tsLHsnHE5oIH89FZzpBmZEIPyAeFBbZ505wvBfePsm6zyNWc4PC8WLKYNa1RHGrIPNqDdYtzKZVGj6M0TuxlNKGXrWpg-l5PDkgR_FbJ_CyFaKgJyWo-sjXzc4Gtkc5CJAoBqCqC8Z1hj9xdVwYHK3nVJ4ztxPQnhtjv4do3JmwkYVafZXAd5-hj9BIhiu1AK-_Woqzq3f2yRljPKWE__tABf06KbQCg" />
+      {/* ── Stats (transparent) ── */}
+      <section
+        className="relative py-24 text-center"
+        style={{ background: 'transparent' }}
+        data-anim="scale-up"
+      >
+        <p className="text-xs font-black tracking-[0.4em] text-white/40 mb-12">BY THE NUMBERS</p>
+        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 px-6">
+          {[
+            { n: '10', s: 'K+', label: 'BURGERS SMASHED' },
+            { n: '24', s: 'H', label: 'DRY-AGED PROCESS' },
+            { n: '100', s: '%', label: 'STREET ATTITUDE' },
+            { n: '0', s: '.1', label: 'BORING MOMENTS' }
+          ].map(({ n, s, label }) => (
+            <div key={label} className="flex flex-col items-center gap-2">
+              <span
+                className="text-[clamp(1.5rem,3.5vw,2.8rem)] font-black text-primary leading-none"
+                data-count={n}
+                data-suffix={s}
+              >{n + s}</span>
+              <span className="text-[10px] font-black tracking-widest text-white/60 uppercase">{label}</span>
             </div>
-            <div className="absolute -bottom-8 -right-4 bg-primary text-white p-6 font-black text-4xl sticker-rotate-left border-4 border-black">
-              BURNT <br/> PERFECTION
-            </div>
-          </div>
-          
-          {/* Vertical Street Art */}
-          <div className="col-span-6 md:col-span-5 relative mt-12 md:mt-24">
-            <div className="w-full h-[500px] bg-neutral-900 overflow-hidden grayscale border-4 border-white paper-tear shadow-2xl hover:grayscale-0 transition-all duration-700">
-              <img className="w-full h-full object-cover" alt="Urban graffiti" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmvbV72GI3hStyfJsIo5YHaNTQREOhzORRm85iUkTPm9WEoyh0iETnXo6_x1WKa9ibhHz_3wy4xithPG8vfsNqGD81zahAaJUd6FCo9BTUMRdimdaf1PhPn1onA1JkkeDPcamYmvYrCjQLD_BPQ5lrdfBPhuB7472uShCQeKMsWiJ3lFGx2ox3Vr7C5c4ftmjQqtmrwKKj2oZMOWkDGyZaTG8fS-AyFKir3pRC5IvLG9pmoD9-FlqAeQmB6846D-JYaGRW2mTAuiA" />
-            </div>
-            <div className="absolute -top-4 -right-2 z-10 w-32 h-10 duct-tape rotate-12 opacity-90"></div>
-            <div className="absolute bottom-10 left-[-20px] bg-white text-black px-4 py-1 text-xs font-black tracking-widest border border-black uppercase sticker-rotate-right">
-              #STREET_SOUL
-            </div>
-          </div>
-          
-          {/* Square People Eating */}
-          <div className="col-span-6 md:col-span-4 relative -mt-10 md:-mt-40 z-20">
-            <div className="w-full aspect-square bg-neutral-800 border-4 border-white shadow-2xl sticker-rotate-left overflow-hidden grayscale hover:grayscale-0 transition-all">
-              <img className="w-full h-full object-cover" alt="Eating burger" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOfzrsrRTDOWsX_-QiIfp4779loAlgsfE4kxgE5fK963T3jc32WfdXDffj1wckQnqshJGYKZ4urmLTD7TR1ZUox_OXHtqpL1nXKtNC6sqke_BaxUDqtmurmbOzor7wvkcBTUdOZ71KWW2WE7g0sxwwH_w2MbnehN1-UlfdN8B1y2uwaJR7Fmtoaw7kGUgB-5wiiJNnhJEHYKc5URVZc3rL-BrX094d9G3sYjoZnmOPpJ9Hr4Z2axOJuqxyUDAeOKhLNxebjrkLG9M" />
-            </div>
-          </div>
-          
-          {/* Wide Urban View */}
-          <div className="col-span-12 md:col-span-8 relative z-10">
-            <div className="w-full h-[400px] bg-neutral-900 border-4 border-white paper-tear overflow-hidden group">
-              <img className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="Night cityscape" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjfJo-7aLWFkBQ8Ygf8J-cyrfJzMu8E55uIR8ez3T-a2KdkpneNSLG-DSYENwEQ39X_DOOnh7y6FP90ymI2c6xOokrLHb5ektrL90GD6wHS886KWkTSrLhKR1z7Wed4YEwCytdvjHWyHHP_Z0Pkbx9_DOmSPkkPnUcGlPDlXjnSqkYdLplVBW2oFCCOXVaSRwnfv483irLH39MX4EI61nvuQ0D2duPQxTgohf2NtrBXzziVg2baqE_fx7s9NcbfLwzVRzdP1Bdroo" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-white text-7xl font-black text-outline tracking-tighter opacity-80 group-hover:opacity-100 transition-opacity">LIVING LOUD</span>
-              </div>
-            </div>
-          </div>
-          
-          {/* Overlapping Elements */}
-          <div className="col-span-6 md:col-span-3 relative -mt-20 md:-mt-60 ml-10 z-30">
-            <div className="w-full aspect-[3/4] bg-white border-2 border-black shadow-xl sticker-rotate-right overflow-hidden p-2">
-              <img className="w-full h-full object-cover grayscale" alt="Close up fries" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATMoOH-9sJ5nV9fw0IuGMhPfUf661dCK6ndnQ9TkNt1vnTkj9vFJ5DDb3kAN-t8PAdBvxEp3XBm1vKnL2gyZemHL1oRB1sXHRpuMeTqIEl7rfZn3fBnTMj3k55qA4iByHkXHvfJGYzbveyODka2FyDBy7L5Ju5FCUeQU6jJTg1tk3qaFC7U8uzPpwgzBCPvgr2gosCKe74wGBc_TwHFyfUhmDCDrwlSWfR_WE-ZpIvDcT9WUJ22pmQwWwoYFpelBISLzvdsDya12Y" />
-              <div className="absolute top-2 right-2 bg-primary text-white text-[10px] font-black px-2 py-1">HOT STUFF</div>
-            </div>
-          </div>
-          
-          {/* Neon Sign */}
-          <div className="col-span-6 md:col-span-4 relative mt-10 md:mt-0">
-            <div className="w-full aspect-square bg-black border-4 border-primary shadow-[0_0_50px_rgba(230,0,0,0.5)] sticker-rotate-left overflow-hidden">
-              <img className="w-full h-full object-cover" alt="Neon burger sign" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6bklzcqNHcK6kaOaqTO6oVBkPIqeRTwoOZ7QwyklM4pAn5vCzGx4cJuNmmfyn4RVNvtJjGNLUGwaI6j0fag09SRVDdTtwNIVx7SVskwm6R-r81oLr8aDaTVAr5zbY7P_ivCDwxrDyayNKUMc50aBr9wQYlEUrjIpAt0TLkFFXC6CwdNPyK6Gwz2n1EwqAle8M3qTmSgXMdVe-J4pOVtcIqx61LwvAGnl5RaqsW7eIBeuPFeQ-8xvj0YjnHgXx6eZHyRojnVZSJ2Q" />
-            </div>
-            <div className="absolute -bottom-4 -left-4 z-10 w-24 h-8 duct-tape rotate-45"></div>
-          </div>
-          
-          {/* Friends & Vibe */}
-          <div className="col-span-12 md:col-span-5 relative mt-10 md:mt-[-50px]">
-            <div className="w-full h-[450px] bg-neutral-900 border-b-[24px] border-primary paper-tear shadow-2xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
-              <img className="w-full h-full object-cover" alt="Friends cheering" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDby4e5w75n1RSK_A55as8H9QSwvtWhZbN8wwBsv9odipJUvPlbwoCnI5e4CxlVd7XvLUK8tLv_nmKWwXkHs0Hvo2cruwpOHpGE-8dp_7BI_hU0EQjGmZf56tOmPSNBayEWYmP3DOJy6YjtdUbBVHMBK7MNZp-p4GcQFykBQhRDc-hDU78cJ2ikPEim2SPQqy_dR27gUeQDUBDWDzQxFOjJ89W1bmuoGl-PLsT1ElY2Z6VaerFzQwrCHpw0RbTfwGZD8yoFCkL0V6o" />
-            </div>
-            <div className="absolute top-1/2 right-[-20px] bg-brandYellow text-black px-6 py-2 font-black text-3xl sticker-rotate-right border-4 border-black">
-              SQUAD GOALS
-            </div>
-          </div>
-        </div>
-      </main>
-
-      {/* Category Filters */}
-      <section className="px-6 lg:px-12 py-20 bg-primary text-white border-y-8 border-black overflow-hidden relative">
-        <div className="flex flex-wrap items-center gap-6 justify-center">
-          <h3 className="text-massive text-outline leading-none absolute opacity-10 pointer-events-none select-none left-0 whitespace-nowrap">CATEGORIES CATEGORIES CATEGORIES</h3>
-          <span className="text-xl font-black uppercase tracking-[0.3em] bg-black text-white px-4 py-1 z-10">FILTER:</span>
-          <button className="px-8 py-3 bg-black text-white font-black text-lg hover:bg-white hover:text-black transition-colors z-10 border border-black">STREET ART</button>
-          <button className="px-8 py-3 bg-black text-white font-black text-lg hover:bg-white hover:text-black transition-colors z-10 border border-black">THE FOOD</button>
-          <button className="px-8 py-3 bg-black text-white font-black text-lg hover:bg-white hover:text-black transition-colors z-10 border border-black">PEOPLE</button>
-          <button className="px-8 py-3 bg-black text-white font-black text-lg hover:bg-white hover:text-black transition-colors z-10 border border-black">NIGHT LIFE</button>
+          ))}
         </div>
       </section>
-    </div>
+
+
+    </section>
   );
-};
-
-export default About;
+}

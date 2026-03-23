@@ -7,17 +7,22 @@ import About from './components/About';
 import OurArsenal from './components/OurArsenal';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import GalleryFilters from './components/GalleryFilters';
+import VideoScrollWrapper from './components/VideoScrollWrapper';
 
 function App() {
   return (
-    <div className="app-container bg-black min-h-screen text-white font-impact overflow-x-hidden">
+    <div className="app-container bg-black min-h-screen text-white font-impact overflow-x-clip">
       <Navbar />
       <Hero />
       <MenuTicker />
       <OurArsenal />
-      <About />
-      <Menu />
-      <Contact />
+      <VideoScrollWrapper>
+        <About />
+        <Menu />
+        <Contact />
+      </VideoScrollWrapper>
+      <GalleryFilters />
       <Footer />
     </div>
   );
