@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const arsenalItems = [
@@ -48,6 +48,30 @@ const itemVariants = {
 };
 
 const OurArsenal = () => {
+  const trackRef = useRef(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || window.innerWidth >= 768) return;
+    
+    let activeIndex = 0;
+    const itemsCount = arsenalItems.length;
+    
+    const interval = setInterval(() => {
+      if (!trackRef.current) return;
+      activeIndex = (activeIndex + 1) % itemsCount;
+      const slides = Array.from(trackRef.current.children);
+      const slide = slides[activeIndex];
+      if (slide) {
+        trackRef.current.scrollTo({
+          left: slide.offsetLeft,
+          behavior: 'smooth'
+        });
+      }
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="arsenal" className="pt-4 pb-12 px-6 md:pt-8 md:px-12 bg-black font-sans relative z-10">
       <div className="max-w-7xl mx-auto">
@@ -61,19 +85,11 @@ const OurArsenal = () => {
           >
             Our <span className="bg-gradient-to-r from-brandRed to-brandYellow text-transparent bg-clip-text">Arsenal</span>
           </motion.h2>
-          <motion.p
-            className="text-gray-400 mt-4 max-w-2xl mx-auto"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Hand-crafted smash burgers designed for maximum impact.
-          </motion.p>
         </div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          ref={trackRef}
+          className="relative flex overflow-x-auto snap-x snap-mandatory gap-6 pb-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:overflow-visible md:snap-none no-scrollbar"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -83,7 +99,7 @@ const OurArsenal = () => {
             <motion.div
               key={item.id}
               variants={itemVariants}
-              className="relative rounded-2xl group hover:-translate-y-2 transition-all duration-300 hover:shadow-[0_0_40px_-10px_rgba(230,0,0,0.5)] h-full"
+              className="snap-center shrink-0 w-[75vw] sm:w-[300px] md:w-auto relative rounded-2xl group hover:-translate-y-2 transition-all duration-300 hover:shadow-[0_0_40px_-10px_rgba(230,0,0,0.5)] h-full flex flex-col"
             >
               <div className="relative bg-[#111] border border-transparent rounded-[15px] overflow-hidden flex flex-col h-full group-hover:border-brandRed group-hover:shadow-[0_0_20px_rgba(230,0,0,0.6)] transition-all duration-300">
                 <div className="relative w-full overflow-hidden shrink-0 bg-black flex justify-center items-center group-hover:scale-105 transition-transform duration-500">
