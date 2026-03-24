@@ -38,6 +38,8 @@ const Menu = () => {
   const [active, setActive] = useState(0);
   const trackRef = useRef(null);
   const timerRef = useRef(null);
+  const scrollTimeoutRef = useRef(null);
+  const videosRef = useRef([]);
 
   const [isMobile, setIsMobile] = useState(
     typeof window !== 'undefined' ? window.innerWidth < 768 : true
@@ -48,6 +50,56 @@ const Menu = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // IntersectionObserver to play/pause videos
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.play().catch(() => {});
+        } else {
+          entry.target.pause();
+        }
+      });
+    }, { threshold: 0.1 });
+
+    videosRef.current.forEach(vid => {
+      if (vid) observer.observe(vid);
+    });
+
+    return () => observer.disconnect();
+  }, [SLIDES]);
+
+  const handleScroll = () => {
+    if (!isMobile || !trackRef.current) return;
+    
+    // Clear the auto-scroll timer while manual scrolling
+    clearInterval(timerRef.current);
+    clearTimeout(scrollTimeoutRef.current);
+    
+    const track = trackRef.current;
+    const center = track.scrollLeft + track.clientWidth / 2;
+    let minDistance = Infinity;
+    let closestIdx = active;
+
+    Array.from(track.children).forEach((child, idx) => {
+      const childCenter = child.offsetLeft + child.clientWidth / 2;
+      const distance = Math.abs(childCenter - center);
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIdx = idx;
+      }
+    });
+
+    if (closestIdx !== active) {
+      setActive(closestIdx);
+    }
+    
+    // Restart timer after user stops scrolling
+    scrollTimeoutRef.current = setTimeout(() => {
+      startTimer();
+    }, 2000);
+  };
 
   const scrollToSlide = (idx, instant = false) => {
     if (!isMobile) return;
@@ -125,6 +177,7 @@ const Menu = () => {
           {/* Track */}
           <div
             ref={trackRef}
+            onScroll={handleScroll}
             className="relative flex md:grid md:grid-cols-2 lg:grid-cols-3 overflow-x-auto md:overflow-visible gap-6 snap-x snap-mandatory md:snap-none pb-4"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
@@ -144,8 +197,10 @@ const Menu = () => {
                   {/* Video */}
                   <div className="relative aspect-[4/5] overflow-hidden">
                     <video
-                      autoPlay
+                      ref={el => videosRef.current[idx] = el}
+                      preload="none"
                       loop
+                      onEnded={(e) => { e.target.currentTime = 0; e.target.play(); }}
                       muted
                       playsInline
                       className={`w-full h-full object-cover transition-all duration-700 ${

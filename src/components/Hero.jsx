@@ -1,7 +1,27 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const Hero = () => {
+  const videosRef = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.play().catch(() => {});
+        } else {
+          entry.target.pause();
+        }
+      });
+    }, { threshold: 0.1 });
+
+    videosRef.current.forEach(vid => {
+      if (vid) observer.observe(vid);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main className="collage-container pt-0 px-0 md:px-4 overflow-hidden relative min-h-0 md:min-h-[90vh]">
       {/* Background Layer - Full Hero Video (Desktop & Mobile) */}
@@ -10,6 +30,7 @@ const Hero = () => {
         <video 
           autoPlay 
           loop 
+          onEnded={(e) => { e.target.currentTime = 0; e.target.play(); }}
           muted 
           playsInline 
           className="absolute w-full h-full object-contain md:object-cover opacity-100 md:opacity-70 z-0" 
@@ -65,9 +86,11 @@ const Hero = () => {
             <div className="relative mt-4 z-10 w-fit">
               <div className="duct-tape -top-3 -left-6 -rotate-12 bg-gray-400 opacity-90 block"></div>
               <video 
-                autoPlay 
+                ref={el => videosRef.current[0] = el}
+                preload="none" 
                 muted 
                 loop 
+                onEnded={(e) => { e.target.currentTime = 0; e.target.play(); }}
                 playsInline
                 className="w-48 h-auto transition-all border-4 border-white shadow-2xl -rotate-3 hover:rotate-0 duration-500 object-cover"
                 src="/assets/carbonara_woman.MOV"
@@ -112,9 +135,11 @@ const Hero = () => {
               <div className="relative mt-1 z-10 w-fit ml-2">
                 <div className="absolute -top-1 -left-1 -rotate-12 bg-gray-400 opacity-90 shadow-[1px_1px_1px_rgba(0,0,0,0.3)] z-[5]" style={{ width: '28px', height: '6px' }}></div>
                 <video 
-                  autoPlay 
+                  ref={el => videosRef.current[1] = el}
+                  preload="none" 
                   muted 
                   loop 
+                  onEnded={(e) => { e.target.currentTime = 0; e.target.play(); }}
                   playsInline
                   className="w-24 h-auto transition-all border border-white shadow-md -rotate-3 object-cover"
                   src="/assets/carbonara_woman.MOV"

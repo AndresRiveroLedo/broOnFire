@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const arsenalItems = [
@@ -48,6 +48,26 @@ const itemVariants = {
 };
 
 const OurArsenal = () => {
+  const videosRef = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.play().catch(() => {});
+        } else {
+          entry.target.pause();
+        }
+      });
+    }, { threshold: 0.1 });
+
+    videosRef.current.forEach(vid => {
+      if (vid) observer.observe(vid);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="arsenal" className="pt-4 pb-12 px-6 md:pt-8 md:px-12 bg-black font-sans relative z-10">
       <div className="max-w-7xl mx-auto">
@@ -89,8 +109,10 @@ const OurArsenal = () => {
                 <div className="relative w-full overflow-hidden shrink-0 bg-black flex justify-center items-center group-hover:scale-105 transition-transform duration-500">
                   {item.video ? (
                     <video
-                      autoPlay
+                      ref={el => videosRef.current[item.id] = el}
+                      preload="none"
                       loop
+                      onEnded={(e) => { e.target.currentTime = 0; e.target.play(); }}
                       muted
                       playsInline
                       className="w-full h-auto block"
