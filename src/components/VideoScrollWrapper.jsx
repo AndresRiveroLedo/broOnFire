@@ -69,6 +69,11 @@ export default function VideoScrollWrapper({ children }) {
       const onLoad = (i, img) => {
         arr[i] = img;
         loaded++;
+        
+        if (i === targetRef.current) {
+          draw(i);
+        }
+        
         const pct = Math.round((loaded / TOTAL_FRAMES) * 100);
         if (loaderBarRef.current) loaderBarRef.current.style.width = pct + '%';
         if (loaded === TOTAL_FRAMES) {

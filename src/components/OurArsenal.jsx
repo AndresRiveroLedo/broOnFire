@@ -8,7 +8,8 @@ const arsenalItems = [
     description: "DRY-AGED BEEF BURGER WITH CHEDDAR CHEESE, ITALIAN GUANCIALE, AND OUR SIGNATURE CARBONARA SAUCE ON A BRIOCHE BUN.",
     price: "15.90 €",
     video: "/assets/carbonara_woman.MOV",
-    popular: true
+    popular: true,
+    badgeClass: "top-4 right-4"
   },
   {
     id: 2,
@@ -16,7 +17,8 @@ const arsenalItems = [
     description: "BURGER BUN, BEEF PATTY, CRISPY BACON, CHEDDAR CHEESE, FRESH TOMATO SLICES, ARUGULA, BALSAMIC REDUCTION DRIZZLE.",
     price: "13.90 €",
     video: "/assets/bacon burger.MOV",
-    popular: true
+    popular: false,
+    badgeClass: "top-4 right-4"
   },
   {
     id: 3,
@@ -47,7 +49,7 @@ const itemVariants = {
 
 const OurArsenal = () => {
   return (
-    <section id="arsenal" className="pt-4 pb-24 px-6 md:pt-8 md:px-12 bg-black font-sans relative z-10">
+    <section id="arsenal" className="pt-4 pb-12 px-6 md:pt-8 md:px-12 bg-black font-sans relative z-10">
       <div className="max-w-7xl mx-auto">
         <div className="mb-6 md:mb-16 text-center">
           <motion.h2
@@ -102,7 +104,7 @@ const OurArsenal = () => {
                     />
                   )}
                   {item.popular && (
-                    <span className="absolute top-4 right-4 bg-gradient-to-r from-brandRed to-brandYellow text-black text-[0.6rem] font-bold px-2 py-0.5 rounded-full shadow-md">
+                    <span className={`absolute ${item.badgeClass || 'top-4 right-4'} bg-gradient-to-r from-brandRed to-brandYellow text-black text-[0.6rem] font-bold px-2 py-0.5 rounded-full shadow-md`}>
                       Top Seller
                     </span>
                   )}
@@ -126,12 +128,6 @@ const OurArsenal = () => {
             </motion.div>
           ))}
         </motion.div>
-
-        <div className="mt-12 text-center">
-          <button className="px-8 py-4 bg-brandRed hover:bg-red-700 text-white font-impact uppercase tracking-widest text-xl transition-colors duration-300 border-2 border-brandRed rounded-none transform skew-x-[-5deg]">
-            View Full Arsenal
-          </button>
-        </div>
       </div>
     </section>
   );
